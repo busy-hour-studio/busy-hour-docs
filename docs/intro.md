@@ -20,9 +20,14 @@ export default function Index() {
 
   useEffect(() => {
     (async () => {
-      // initialize the app based on the config file
-      // highlight-next-line
-      await initializeApp()
+      // highlight-start
+      await initializeApp({
+        // initialize the app based on the config file
+        configFile: busyConfig,
+        projectAppId: 'your-project-app-id',
+        projectId: 'your-project-id',
+      })
+      // highlight-end
 
       setServiceIsInitialized(true)
     })()
