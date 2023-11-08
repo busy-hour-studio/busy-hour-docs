@@ -2,7 +2,7 @@ import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import clsx from 'clsx';
 import React from 'react';
-import styles from '../../../pages/index.module.css';
+import styles from './index.module.scss';
 
 function HomepageHeader() {
   const { siteConfig } = useDocusaurusContext();
