@@ -1,0 +1,9 @@
+{
+  "label": "@busy-hour/node",
+  "position": 4,
+  "link": {
+    "slug": "nodejs",
+    "type": "generated-index",
+    "description": "Learn more about Busy Hour implementation in Node Js."
+  }
+}

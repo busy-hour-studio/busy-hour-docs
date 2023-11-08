@@ -1,47 +1,63 @@
 ---
 sidebar_position: 1
+sidebar_label: Introduction
 ---
 
-# Tutorial Intro
+# Busy Hour
 
-Let's discover **Docusaurus in less than 5 minutes**.
+Busy Hour is a chat, voice & video call, and activity feeds solutions. Any messages that stored in Busy Hour is fully encrypted, including the activity feeds of the users. The encryption can be enabled through the [dashboard](https://busyhour.id/dashboard) when creating the project and cannot be changed afterwards.
 
-## Getting Started
+# Quick Example
 
-Get started by **creating a new site**.
+```tsx title="src/index.ts"
+import React, { useEffect } from 'react'
+import { initializeApp } from '@busy-hour/react'
+// Config file from Busy Hour Dashboard
+import busyConfig from './busyConfig.json'
 
-Or **try Docusaurus immediately** with **[docusaurus.new](https://docusaurus.new)**.
+export default function Index() {
+  const [isServiceInitialized, setServiceIsInitialized] = useState(false)
 
-### What you'll need
+  useEffect(() => {
+    (async () => {
+      // initialize the app based on the config file
+      // highlight-next-line
+      await initializeApp()
 
-- [Node.js](https://nodejs.org/en/download/) version 16.14 or above:
-  - When installing Node.js, you are recommended to check all checkboxes related to dependencies.
+      setServiceIsInitialized(true)
+    })()
+  }, [])
 
-## Generate a new site
+  if (!isServiceInitialized) {
+    return <div>Loading...</div>
+  }
 
-Generate a new Docusaurus site using the **classic template**.
-
-The classic template will automatically be added to your project after you run the command:
-
-```bash
-npm init docusaurus@latest my-website classic
+  return <App />
 ```
 
-You can type this command into Command Prompt, Powershell, Terminal, or any other integrated terminal of your code editor.
+```tsx title="src/main.ts"
+import React, { useEffect } from 'react';
+import { initializeService } from '@busy-hour/react';
 
-The command also installs all necessary dependencies you need to run Docusaurus.
+export default function Main() {
+  useEffect(() => {
+    (async () => {
+      // get user auth data from busy hour through your BE
+      // read more at https://docs.busyhour.id/docs/category/nodejs
+      // or at https://docs.busyhour.id/docs/category/rest
+      // highlight-start
+      const { data } = await axios.post<{
+        accessToken: string,
+        serviceToken: string
+      }>(...)
+      // highlight-end
 
-## Start your site
+      // initialize the service using the auth
+      // highlight-next-line
+      await initializeService(data.accessToken, data.serviceToken);
+    })();
+  }, []);
 
-Run the development server:
-
-```bash
-cd my-website
-npm run start
+  return <MainApp />;
+}
 ```
-
-The `cd` command changes the directory you're working with. In order to work with your newly created Docusaurus site, you'll need to navigate the terminal there.
-
-The `npm run start` command builds your website locally and serves it through a development server, ready for you to view at http://localhost:3000/.
-
-Open `docs/intro.md` (this page) and edit some lines: the site **reloads automatically** and displays your changes.

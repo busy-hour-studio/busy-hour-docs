@@ -40,7 +40,8 @@
     "import/no-unresolved": [
       "off",
       { "ignore": ["^@theme", "^@docusaurus", "^@site"] }
-    ]
+    ],
+    "import/no-named-as-default": "off"
   },
   "settings": {
     "import/parsers": {
