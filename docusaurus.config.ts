@@ -1,7 +1,7 @@
 // Note: type annotations allow type checking and IDEs autocompletion
 
-import { themes } from 'prism-react-renderer';
 import type { Config } from '@docusaurus/types';
+import { themes } from 'prism-react-renderer';
 
 const lightCodeTheme = themes.github;
 const darkCodeTheme = themes.dracula;
@@ -36,7 +36,7 @@ const config = {
 
   presets: [
     [
-      'classic',
+      '@docusaurus/preset-classic',
       /** @type {import('@docusaurus/preset-classic').Options} */
       {
         docs: {
@@ -54,7 +54,7 @@ const config = {
             'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
         },
         theme: {
-          customCss: require.resolve('./src/css/custom.css'),
+          customCss: require.resolve('./src/css/custom.scss'),
         },
       },
     ],
@@ -76,7 +76,7 @@ const config = {
             type: 'docSidebar',
             sidebarId: 'tutorialSidebar',
             position: 'left',
-            label: 'Tutorial',
+            label: 'Documentation',
           },
           { to: '/blog', label: 'Blog', position: 'left' },
           {
@@ -98,11 +98,11 @@ const config = {
               },
               {
                 label: 'React',
-                to: '/docs/react',
+                to: 'docs/react',
               },
               {
                 label: 'React Native',
-                to: '/docs/react-native',
+                to: 'docs/react-native',
               },
               {
                 label: 'Node.js',
@@ -147,7 +147,13 @@ const config = {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
       },
+      colorMode: {
+        defaultMode: 'dark',
+        disableSwitch: true,
+        respectPrefersColorScheme: false,
+      },
     },
+  plugins: ['docusaurus-plugin-sass'],
 } satisfies Config;
 
 module.exports = config;

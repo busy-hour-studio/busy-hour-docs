@@ -1,0 +1,9 @@
+{
+  "label": "Rest API",
+  "position": 4,
+  "link": {
+    "slug": "rest",
+    "type": "generated-index",
+    "description": "Learn more about Busy Hour implementation in Rest API."
+  }
+}

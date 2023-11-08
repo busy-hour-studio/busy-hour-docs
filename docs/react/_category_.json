@@ -1,0 +1,9 @@
+{
+  "label": "@busy-hour/react",
+  "position": 2,
+  "link": {
+    "slug": "react",
+    "type": "generated-index",
+    "description": "Learn more about Busy Hour implementation in React."
+  }
+}
