@@ -20,8 +20,10 @@ const config = {
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'busyhour', // Usually your GitHub org/user name.
-  projectName: 'busy-hour-doc', // Usually your repo name.
+  organizationName: 'busy-hour-studio', // Usually your GitHub org/user name.
+  projectName: 'busy-hour-docs', // Usually your repo name.
+  deploymentBranch: 'gh-pages',
+  trailingSlash: false,
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',

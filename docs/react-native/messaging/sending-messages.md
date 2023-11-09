@@ -13,7 +13,7 @@ sidebar_label: Sending Messages
 
 ## Sending Messages
 
-To start sending a messages, you will need to use the `useChatMessages` which is exported from the `@busy-hour/react-native/hooks` package. For more detail about the usage of the hook you can read more about the useChatMessages from the [Listening to Messages](../react-native/listening-to-messages#listen-to-specific-incoming-messages). To send a message, you can use the `sendMessage` function which is one of the return properties of the `useChatMessages` hook. To use it, you need to pass some properties which detailed below.
+To start sending a messages, you will need to use the `useChatMessages` which is exported from the `@busy-hour/react-native/hooks` package. For more detail about the usage of the hook you can read more about the useChatMessages from the [Listening to Messages](./listening-to-messages#listen-to-specific-incoming-messages). To send a message, you can use the `sendMessage` function which is one of the return properties of the `useChatMessages` hook. To use it, you need to pass some properties which detailed below.
 
 | Property      | Type                      | Description                                 |
 | ------------- | ------------------------- | ------------------------------------------- |
