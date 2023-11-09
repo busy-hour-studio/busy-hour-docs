@@ -22,15 +22,50 @@ To initialize Busy Hour Project/App, you can use the `initializeApp` function. T
 - `projectAppId` - Project App ID from Busy Hour Dashboard/Apps
 - `projectId` - Project ID from Busy Hour Dashboard/Projects
 
+<details>
+<summary>With Hook</summary>
+
 ```tsx title="src/index.tsx"
-import React, { useEffect } from 'react'
-import { Text } from 'react-native'
-import { initializeApp } from '@busy-hour/react-native'
+import React from 'react';
+import { Text } from 'react-native';
+import { useInitBusyApp } from '@busy-hour/react/hooks';
 // Config file from Busy Hour Dashboard
-import busyConfig from './busyConfig.json'
+import busyConfig from './busyConfig.json';
 
 export default function Index() {
-  const [isServiceInitialized, setServiceIsInitialized] = useState(false)
+  // highlight-start
+  const isAppInitialized = useInitBusyApp({
+    // initialize the app based on the config file
+    configFile: busyConfig,
+    projectAppId: 'your-project-app-id',
+    projectId: 'your-project-id',
+    // determine if the app should be initialized or not
+    isShouldInit: true,
+  });
+  // highlight-end
+
+  if (!isAppInitialized) {
+    return <Text>Loading...</Text>;
+  }
+
+  return <App />;
+}
+```
+
+</details>
+
+<details>
+<summary>Without Hook</summary>
+
+```tsx title="src/index.tsx"
+import React, { useEffect } from 'react';
+import { Text } from 'react-native';
+import { initializeApp } from '@busy-hour/react-native';
+// Config file from Busy Hour Dashboard
+import busyConfig from './busyConfig.json';
+
+export default function Index() {
+  const [isServiceInitialized, setServiceIsInitialized] = useState(false);
 
   useEffect(() => {
     (async () => {
@@ -40,19 +75,22 @@ export default function Index() {
         configFile: busyConfig,
         projectAppId: 'your-project-app-id',
         projectId: 'your-project-id',
-      })
+      });
       // highlight-end
 
-      setServiceIsInitialized(true)
-    })()
-  }, [])
+      setServiceIsInitialized(true);
+    })();
+  }, []);
 
   if (!isServiceInitialized) {
-    return <Text>Loading...</Text>
+    return <Text>Loading...</Text>;
   }
 
-  return <App />
+  return <App />;
+}
 ```
+
+</details>
 
 ## Initializing Busy Hour Main Service
 
@@ -66,6 +104,40 @@ To get the user access token and service token, you can use the `fetch/axios` to
 
 In this example, the idea is that you request the auth data to your Backend and then requesting it from Backend to our REST API or using the `@busy-hour/node` package, afterwards the response will be passed to the `initializeService` function.
 :::
+
+<details>
+<summary>With Hook</summary>
+
+```tsx title="src/main.tsx"
+import React from 'react';
+import { Text } from 'react-native';
+import { useInitBusyService } from '@busy-hour/react/hooks';
+
+export default function Main() {
+  // highlight-start
+  const isServiceInitialized = useInitBusyService({
+    // get user auth data from busy hour through your BE
+    // read more at https://docs.busyhour.id/docs/category/nodejs
+    // or at https://docs.busyhour.id/docs/category/rest
+    accessToken: 'your-user-access-token',
+    serviceToken: 'your-user-service-token',
+    // determine if the app should be initialized or not
+    isShouldInit: true,
+  });
+  // highlight-end
+
+  if (!isServiceInitialized) {
+    return <Text>Loading...</Text>;
+  }
+
+  return <MainApp />;
+}
+```
+
+</details>
+
+<details>
+<summary>Without Hook</summary>
 
 ```tsx title="src/main.tsx"
 import React, { useEffect } from 'react'
@@ -94,3 +166,5 @@ export default function Main() {
   return <MainApp />
 }
 ```
+
+</details>

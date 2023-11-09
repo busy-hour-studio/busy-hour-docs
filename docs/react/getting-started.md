@@ -29,14 +29,48 @@ You need to put the `messaging-init-sw.js` file in the `public` folder or set th
 In case the `serviceWorker` argument is not set, the `messaging-init-sw.js` will be loaded from the `public` folder and if it doesn't exist, you will not be able to receive messages while the app is running in the background.
 :::
 
+<details>
+<summary>With Hook</summary>
+
 ```tsx title="src/index.tsx"
-import React, { useEffect } from 'react'
-import { initializeApp } from '@busy-hour/react'
+import React from 'react';
+import { useInitBusyApp } from '@busy-hour/react/hooks';
 // Config file from Busy Hour Dashboard
-import busyConfig from './busyConfig.json'
+import busyConfig from './busyConfig.json';
 
 export default function Index() {
-  const [isServiceInitialized, setServiceIsInitialized] = useState(false)
+  // highlight-start
+  const isAppInitialized = useInitBusyApp({
+    // initialize the app based on the config file
+    configFile: busyConfig,
+    projectAppId: 'your-project-app-id',
+    projectId: 'your-project-id',
+    // determine if the app should be initialized or not
+    isShouldInit: true,
+  });
+  // highlight-end
+
+  if (!isAppInitialized) {
+    return <div>Loading...</div>;
+  }
+
+  return <App />;
+}
+```
+
+</details>
+
+<details>
+<summary>Without Hook</summary>
+
+```tsx title="src/index.tsx"
+import React, { useEffect } from 'react';
+import { initializeApp } from '@busy-hour/react';
+// Config file from Busy Hour Dashboard
+import busyConfig from './busyConfig.json';
+
+export default function Index() {
+  const [isAppInitialized, setIsAppInitialized] = useState(false);
 
   useEffect(() => {
     (async () => {
@@ -46,19 +80,22 @@ export default function Index() {
         configFile: busyConfig,
         projectAppId: 'your-project-app-id',
         projectId: 'your-project-id',
-      })
+      });
       // highlight-end
 
-      setServiceIsInitialized(true)
-    })()
-  }, [])
+      setIsAppInitialized(true);
+    })();
+  }, []);
 
-  if (!isServiceInitialized) {
-    return <div>Loading...</div>
+  if (!isAppInitialized) {
+    return <div>Loading...</div>;
   }
 
-  return <App />
+  return <App />;
+}
 ```
+
+</details>
 
 ## Initializing Busy Hour Main Service
 
@@ -72,6 +109,39 @@ To get the user access token and service token, you can use the `fetch/axios` to
 
 In this example, the idea is that you request the auth data to your Backend and then requesting it from Backend to our REST API or using the `@busy-hour/node` package, afterwards the response will be passed to the `initializeService` function.
 :::
+
+<details>
+<summary>With Hook</summary>
+
+```tsx title="src/main.tsx"
+import React from 'react';
+import { useInitBusyService } from '@busy-hour/react/hooks';
+
+export default function Main() {
+  // highlight-start
+  const isServiceInitialized = useInitBusyService({
+    // get user auth data from busy hour through your BE
+    // read more at https://docs.busyhour.id/docs/category/nodejs
+    // or at https://docs.busyhour.id/docs/category/rest
+    accessToken: 'your-user-access-token',
+    serviceToken: 'your-user-service-token',
+    // determine if the app should be initialized or not
+    isShouldInit: true,
+  });
+  // highlight-end
+
+  if (!isServiceInitialized) {
+    return <div>Loading...</div>;
+  }
+
+  return <MainApp />;
+}
+```
+
+</details>
+
+<details>
+<summary>Without Hook</summary>
 
 ```tsx title="src/main.tsx"
 import React, { useEffect } from 'react';
@@ -99,3 +169,5 @@ export default function Main() {
   return <MainApp />
 }
 ```
+
+</details>
