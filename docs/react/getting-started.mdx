@@ -3,6 +3,9 @@ sidebar_position: 1
 sidebar_label: Getting Started
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 # Getting Started
 
 In this section, we will show you how to initialize the Busy Hour App and Main Service.
@@ -14,13 +17,47 @@ In this section, we will show you how to initialize the Busy Hour App and Main S
 3. Create a Busy Hour App from from the [Dashboard/Apps](https://busyhour.id/dashboard/apps)
 4. Download Busy Hour App config file from from the [Dashboard/Apps](https://busyhour.id/dashboard/apps)
 
+## Installation
+
+<Tabs>
+<TabItem value="npm" label="NPM" default>
+```bash
+
+npm i @busy-hour/react
+
+```
+</TabItem>
+<TabItem value="yarn" label="YARN">
+```bash
+
+yarn add @busy-hour/react
+
+```
+
+</TabItem>
+<TabItem value="pnpm" label="PNPM">
+```bash
+
+pnpm add @busy-hour/react
+
+```
+</TabItem>
+</Tabs>
+
 ## Initializing Busy Hour Project/App
 
-To initialize Busy Hour Project/App, you can use the `initializeApp` function. The `initializeApp` function is exported from the `@busy-hour/react-native` package and take the following arguments:
+To initialize Busy Hour Project/App, you can use the `initializeApp` function. The `initializeApp` function is exported from the `@busy-hour/react` package and take the following arguments:
 
 - `configFile` - Config file from Busy Hour Dashboard/Apps
 - `projectAppId` - Project App ID from Busy Hour Dashboard/Apps
 - `projectId` - Project ID from Busy Hour Dashboard/Projects
+- `serviceWorker` - Service Worker File location, default is `messaging-init-sw.js`
+
+:::warning
+You need to put the `messaging-init-sw.js` file in the `public` folder or set the `serviceWorker` argument to the place where your `messaging-init-sw.js` located in the `public` folder.
+
+In case the `serviceWorker` argument is not set, the `messaging-init-sw.js` will be loaded from the `public` folder and if it doesn't exist, you will not be able to receive messages while the app is running in the background.
+:::
 
 ### Quick Example
 
@@ -28,11 +65,10 @@ To initialize Busy Hour Project/App, you can use the `initializeApp` function. T
 <summary>With Hook</summary>
 
 ```tsx title="src/index.tsx"
-import React from 'react';
-import { Text } from 'react-native';
-import { useInitBusyApp } from '@busy-hour/react/hooks';
+import React from 'react'
+import { useInitBusyApp } from '@busy-hour/react/hooks'
 // Config file from Busy Hour Dashboard
-import busyConfig from './busyConfig.json';
+import busyConfig from './busyConfig.json'
 
 export default function Index() {
   // highlight-start
@@ -43,14 +79,14 @@ export default function Index() {
     projectId: 'your-project-id',
     // determine if the app should be initialized or not
     isShouldInit: true,
-  });
+  })
   // highlight-end
 
   if (!isAppInitialized) {
-    return <Text>Loading...</Text>;
+    return <div>Loading...</div>
   }
 
-  return <App />;
+  return <App />
 }
 ```
 
@@ -60,14 +96,13 @@ export default function Index() {
 <summary>Without Hook</summary>
 
 ```tsx title="src/index.tsx"
-import React, { useEffect } from 'react';
-import { Text } from 'react-native';
-import { initializeApp } from '@busy-hour/react-native';
+import React, { useEffect } from 'react'
+import { initializeApp } from '@busy-hour/react'
 // Config file from Busy Hour Dashboard
-import busyConfig from './busyConfig.json';
+import busyConfig from './busyConfig.json'
 
 export default function Index() {
-  const [isServiceInitialized, setServiceIsInitialized] = useState(false);
+  const [isAppInitialized, setIsAppInitialized] = useState(false)
 
   useEffect(() => {
     (async () => {
@@ -77,18 +112,18 @@ export default function Index() {
         configFile: busyConfig,
         projectAppId: 'your-project-app-id',
         projectId: 'your-project-id',
-      });
+      })
       // highlight-end
 
-      setServiceIsInitialized(true);
-    })();
-  }, []);
+      setIsAppInitialized(true)
+    })()
+  }, [])
 
-  if (!isServiceInitialized) {
-    return <Text>Loading...</Text>;
+  if (!isAppInitialized) {
+    return <div>Loading...</div>
   }
 
-  return <App />;
+  return <App />
 }
 ```
 
@@ -96,7 +131,7 @@ export default function Index() {
 
 ## Initializing Busy Hour Main Service
 
-After initializing Busy Hour Project/App, now you can initialize Busy Hour main services using `initializeService` function. The `initializeService` function is exported from the `@busy-hour/react-native` package and take the following arguments:
+After initializing Busy Hour Project/App, now you can initialize Busy Hour main services using `initializeService` function. The `initializeService` function is exported from the `@busy-hour/react` package and take the following arguments:
 
 - `accessToken` - User access token
 - `serviceToken` - Service token
@@ -113,9 +148,8 @@ In this example, the idea is that you request the auth data to your Backend and 
 <summary>With Hook</summary>
 
 ```tsx title="src/main.tsx"
-import React from 'react';
-import { Text } from 'react-native';
-import { useInitBusyService } from '@busy-hour/react/hooks';
+import React from 'react'
+import { useInitBusyService } from '@busy-hour/react/hooks'
 
 export default function Main() {
   // highlight-start
@@ -127,14 +161,14 @@ export default function Main() {
     serviceToken: 'your-user-service-token',
     // determine if the app should be initialized or not
     isShouldInit: true,
-  });
+  })
   // highlight-end
 
   if (!isServiceInitialized) {
-    return <Text>Loading...</Text>;
+    return <div>Loading...</div>
   }
 
-  return <MainApp />;
+  return <MainApp />
 }
 ```
 
@@ -145,8 +179,7 @@ export default function Main() {
 
 ```tsx title="src/main.tsx"
 import React, { useEffect } from 'react'
-import { Text } from 'react-native'
-import { initializeService } from '@busy-hour/react-native';
+import { initializeService } from '@busy-hour/react'
 
 export default function Main() {
   useEffect(() => {
@@ -163,9 +196,9 @@ export default function Main() {
 
       // initialize the service using the auth
       // highlight-next-line
-      await initializeService(data.accessToken, data.serviceToken);
-    })();
-  }, []);
+      await initializeService(data.accessToken, data.serviceToken)
+    })()
+  }, [])
 
   return <MainApp />
 }
