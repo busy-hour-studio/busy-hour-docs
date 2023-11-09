@@ -1,0 +1,9 @@
+{
+  "label": "Messaging",
+  "position": 3,
+  "link": {
+    "slug": "react-native/messaging",
+    "type": "generated-index",
+    "description": "Learn more about Busy Hour Messaging implementation in React Native."
+  }
+}

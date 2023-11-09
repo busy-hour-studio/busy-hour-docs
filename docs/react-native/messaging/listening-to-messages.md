@@ -1,5 +1,5 @@
 ---
-sidebar_position: 3
+sidebar_position: 1
 sidebar_label: Listening to Messages
 ---
 
@@ -9,9 +9,9 @@ In this section, we will show you how to listen to messages from the messaging s
 
 ## Preqrequisites
 
-1. App Initialized (see [Initializing Busy Hour Project/App](../react-native/getting-started#initializing-busy-hour-projectapp))
-2. Main Service Initialized (see [Initializing Busy Hour Main Service](../react-native/getting-started#initializing-busy-hour-main-service))
-3. Messaging Service Initialized (see [Initializing Messaging](../react-native/initializing-services#initializing-messaging))
+1. App Initialized (see [Initializing Busy Hour Project/App](../getting-started#initializing-busy-hour-projectapp))
+2. Main Service Initialized (see [Initializing Busy Hour Main Service](../getting-started#initializing-busy-hour-main-service))
+3. Messaging Service Initialized (see [Initializing Messaging](../initializing-services#initializing-messaging))
 
 ## Listen to Latest Messages
 

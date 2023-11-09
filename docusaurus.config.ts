@@ -46,13 +46,14 @@ const config = {
           editUrl:
             'https://github.com/Busy-Hour-Studio/busy-hour-docs/tree/main/',
         },
-        blog: {
-          showReadingTime: true,
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/Busy-Hour-Studio/busy-hour-docs/tree/main/',
-        },
+        blog: false,
+        //  {
+        //   showReadingTime: true,
+        //   // Please change this to your repo.
+        //   // Remove this to remove the "edit this page" links.
+        //   editUrl:
+        //     'https://github.com/Busy-Hour-Studio/busy-hour-docs/tree/main/',
+        // },
         theme: {
           customCss: require.resolve('./src/css/custom.scss'),
         },
@@ -78,7 +79,7 @@ const config = {
             position: 'left',
             label: 'Documentation',
           },
-          { to: '/blog', label: 'Blog', position: 'left' },
+          // { to: '/blog', label: 'Blog', position: 'left' },
           {
             href: 'https://github.com/Busy-Hour-Studio/busy-hour-docs/tree/main',
             label: 'GitHub',
@@ -126,10 +127,10 @@ const config = {
           {
             title: 'More',
             items: [
-              {
-                label: 'Blog',
-                to: '/blog',
-              },
+              // {
+              //   label: 'Blog',
+              //   to: '/blog',
+              // },
               {
                 label: 'Dashboard',
                 href: 'https://busyhour.id/dashboard',
