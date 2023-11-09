@@ -3,7 +3,7 @@ sidebar_position: 2
 sidebar_label: Initializing Services
 ---
 
-import { info as initializingInfo } from '../assets/initializing.json';
+import initializing from '../assets/initializing.json';
 
 # Initializing Services
 
@@ -15,8 +15,10 @@ To use the activity feeds functionality, you need to initialize the activity fee
 
 :::info
 
-<span>{initializingInfo}</span>
+<span>{initializing.info}</span>
 :::
+
+### Quick Example
 
 ```tsx title="src/main.tsx"
 import { useInitActivityFeed } from '@busy-hour/react/hooks';
@@ -45,8 +47,10 @@ To initialize only the messaging service without the notification, you can use t
 
 :::info
 
-<span>{initializingInfo}</span>
+<span>{initializing.info}</span>
 :::
+
+### Quick Example
 
 ```tsx title="src/main.tsx"
 import { useInitMessaging } from '@busy-hour/react/hooks';
@@ -70,8 +74,10 @@ When initializing the notification service, you will get an object as the return
 
 :::info
 
-<span>{initializingInfo}</span>
+<span>{initializing.info}</span>
 :::
+
+### Quick Example
 
 ```tsx title="src/main.tsx"
 import { useInitNotification } from '@busy-hour/react/hooks';

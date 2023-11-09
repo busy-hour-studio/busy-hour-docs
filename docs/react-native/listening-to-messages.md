@@ -4,3 +4,89 @@ sidebar_label: Listening to Messages
 ---
 
 # Listening to Messages
+
+In this section, we will show you how to listen to messages from the messaging service.
+
+## Preqrequisites
+
+1. App Initialized (see [Initializing Busy Hour Project/App](../react-native/getting-started#initializing-busy-hour-projectapp))
+2. Main Service Initialized (see [Initializing Busy Hour Main Service](../react-native/getting-started#initializing-busy-hour-main-service))
+3. Messaging Service Initialized (see [Initializing Messaging](../react-native/initializing-services#initializing-messaging))
+
+## Listen to Latest Messages
+
+To listen to all latest messages (e.g. `group only`, `private only`, or `both`), you can use the `useLastMessageListener` hook which is exported from the `@busy-hour/react-native/hooks` package. The hook will return an object that contains `privates`, `groups`, `messages`, `listenLastMessages`, and `removeLastMessageListener`. For more detail about the properties see the detail from this table:
+
+| Property                    | Type        | Description                         |
+| --------------------------- | ----------- | ----------------------------------- |
+| `privates`                  | `message[]` | The last messages in `private` chat |
+| `groups`                    | `message[]` | The last messages in `group` chat   |
+| `messages`                  | `message[]` | The last messages in `both` chat    |
+| `listenLastMessages`        | `function`  | Listen to latest messages           |
+| `removeLastMessageListener` | `function`  | Remove the listener                 |
+
+### Quick Example
+
+```tsx title="src/main.tsx"
+
+import React, { useEffect } from 'react'
+import { useLastMessageListener } from '@busy-hour/react-native/hooks'
+
+export default Main() {
+  // highlight-next-line
+  const { listenLastMessages, removeLastMessageListener } = useLastMessageListener()
+
+  useEffect(() => {
+    // highlight-start
+    // Start listening to all incoming last messages
+    listenLastMessages()
+
+    return () => {
+      // Stop listening to all incoming last messages
+      removeLastMessageListener()
+    }
+    // highlight-end
+  }, [])
+
+  return <MainApp />
+}
+
+```
+
+## Listen to Specific Incoming Messages
+
+To listen to specific messages (e.g `group with specific id` or `private with specific id`), your can use the `useChatMessages` hook which is exported from the `@busy-hour/react-native/hooks` package. The hook accept an object as the argument, for more detail about the argument properties see the detail from this table:
+
+| Property | Type                       | Description                                        |
+| -------- | -------------------------- | -------------------------------------------------- |
+| `type`   | `private` \| `group`       | Type of the messages to listen into                |
+| `chatId` | `string`                   | The chat id to listen into                         |
+| `limit`  | `number` (optional)        | Total message to retrieve (default: 15)            |
+| `order`  | `asc` \| `desc` (optional) | Order of the messages to retrieve (default: `asc`) |
+
+The hook itself will return an object that contains `messages` and `sendMessage`. For more detail about the properties see the detail from this table:
+
+| Property      | Type        | Description                |
+| ------------- | ----------- | -------------------------- |
+| `messages`    | `message[]` | The messages in the chat   |
+| `sendMessage` | `function`  | Send a message to the chat |
+
+### Quick Example
+
+```tsx title="src/main.tsx"
+
+import React, { useEffect } from 'react'
+import { useChatMessages } from '@busy-hour/react-native/hooks'
+
+export default Main() {
+  // highlight-start
+  const { mesages, sendMessage } = useChatMessages({
+    type: 'private',
+    chatId: 'the-chat-id-to-listen-to',
+  })
+  // highlight-end
+
+  return <MainApp />
+}
+
+```
