@@ -29,6 +29,8 @@ You need to put the `messaging-init-sw.js` file in the `public` folder or set th
 In case the `serviceWorker` argument is not set, the `messaging-init-sw.js` will be loaded from the `public` folder and if it doesn't exist, you will not be able to receive messages while the app is running in the background.
 :::
 
+### Quick Example
+
 <details>
 <summary>With Hook</summary>
 
@@ -109,6 +111,8 @@ To get the user access token and service token, you can use the `fetch/axios` to
 
 In this example, the idea is that you request the auth data to your Backend and then requesting it from Backend to our REST API or using the `@busy-hour/node` package, afterwards the response will be passed to the `initializeService` function.
 :::
+
+### Quick Example
 
 <details>
 <summary>With Hook</summary>

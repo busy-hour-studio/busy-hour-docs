@@ -22,6 +22,8 @@ To initialize Busy Hour Project/App, you can use the `initializeApp` function. T
 - `projectAppId` - Project App ID from Busy Hour Dashboard/Apps
 - `projectId` - Project ID from Busy Hour Dashboard/Projects
 
+### Quick Example
+
 <details>
 <summary>With Hook</summary>
 
@@ -104,6 +106,8 @@ To get the user access token and service token, you can use the `fetch/axios` to
 
 In this example, the idea is that you request the auth data to your Backend and then requesting it from Backend to our REST API or using the `@busy-hour/node` package, afterwards the response will be passed to the `initializeService` function.
 :::
+
+### Quick Example
 
 <details>
 <summary>With Hook</summary>
