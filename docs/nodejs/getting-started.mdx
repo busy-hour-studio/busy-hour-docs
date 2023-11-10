@@ -43,3 +43,15 @@ pnpm add @busy-hour/node
 ```
 </TabItem>
 </Tabs>
+
+## Setting Up
+
+To start using the Busy Hour API from NodeJs SDK, you need to import the `BusyHourNode` class from `@busy-hour/node` package. The class itself takes an object as an argument that contains the API key. For more information, you can refer to the code snippet below.
+
+```ts title="src/index.ts"
+
+import BusyHourNode from '@busy-hour/node';
+
+const nodeSdk = new BusyHourNode({ apiKey: 'your-api-key' })
+
+```
