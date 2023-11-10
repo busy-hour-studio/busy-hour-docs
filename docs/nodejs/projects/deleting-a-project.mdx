@@ -1,0 +1,40 @@
+---
+sidebar_position: 4
+sidebar_label: Deleting a Project
+---
+
+import Prerequisites from '@site/src/components/docs/nodejs/Prerequisite';
+
+# Deleting a Project
+
+:::danger
+Deleting any Busy Hour Project will remove any access to the project including the apps and the users. Keep in mind that this action is irreversible and cannot be undone.
+:::
+
+In this section, we will show you how to delete a Busy Hour Project.
+
+## Prerequisites
+
+<Prerequisites />
+
+## Deleting a Project
+
+:::warning
+You can delete a Busy Hour Project with any Master API Key or a Project API Key that only specificly for the project you want to delete.
+:::
+
+To delete a Busy Hour Project, you can use the `project.delete` function from the `@busy-hour/node` package. The function take a `projectId` to delete as the argument.
+
+### Quick Example
+
+```ts title="src/main.ts"
+import BusyHourNode from '@busy-hour/node';
+
+// Create an instance of BusyHourNode with your API key (Master/Project)
+// highlight-next-line
+const nodeSdk = new BusyHourNode({ apiKey: 'your-api-key' });
+
+// highlight-start
+nodeSdk.project.delete('your-project-id');
+// highlight-end
+```

@@ -88,14 +88,14 @@ export default function Index() {
 <summary>Without Hook</summary>
 
 ```tsx title="src/index.tsx"
-import React, { useEffect } from 'react'
-import { Text } from 'react-native'
-import { initializeApp } from '@busy-hour/react-native'
+import React, { useEffect } from 'react';
+import { Text } from 'react-native';
+import { initializeApp } from '@busy-hour/react-native';
 // Config file from Busy Hour Dashboard
-import busyConfig from './busyConfig.json'
+import busyConfig from './busyConfig.json';
 
 export default function Index() {
-  const [isServiceInitialized, setServiceIsInitialized] = useState(false)
+  const [isServiceInitialized, setServiceIsInitialized] = useState(false);
 
   useEffect(() => {
     (async () => {
@@ -105,18 +105,18 @@ export default function Index() {
         configFile: busyConfig,
         projectAppId: 'your-project-app-id',
         projectId: 'your-project-id',
-      })
+      });
       // highlight-end
 
-      setServiceIsInitialized(true)
-    })()
-  }, [])
+      setServiceIsInitialized(true);
+    })();
+  }, []);
 
   if (!isServiceInitialized) {
-    return <Text>Loading...</Text>
+    return <Text>Loading...</Text>;
   }
 
-  return <App />
+  return <App />;
 }
 ```
 
@@ -141,9 +141,9 @@ In this example, the idea is that you request the auth data to your Backend and 
 <summary>With Hook</summary>
 
 ```tsx title="src/main.tsx"
-import React from 'react'
-import { Text } from 'react-native'
-import { useInitBusyService } from '@busy-hour/react-native/hooks'
+import React from 'react';
+import { Text } from 'react-native';
+import { useInitBusyService } from '@busy-hour/react-native/hooks';
 
 export default function Main() {
   // highlight-start
@@ -155,14 +155,14 @@ export default function Main() {
     serviceToken: 'your-user-service-token',
     // determine if the app should be initialized or not
     isShouldInit: true,
-  })
+  });
   // highlight-end
 
   if (!isServiceInitialized) {
-    return <Text>Loading...</Text>
+    return <Text>Loading...</Text>;
   }
 
-  return <MainApp />
+  return <MainApp />;
 }
 ```
 

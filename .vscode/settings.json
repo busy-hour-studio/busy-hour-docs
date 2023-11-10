@@ -1,5 +1,13 @@
 {
   "editor.codeActionsOnSave": {
     "source.organizeImports": true
+  },
+  "[mdx]": {
+    "editor.formatOnSave": false,
+    "editor.formatOnPaste": false,
+    "editor.formatOnType": false,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": false
+    }
   }
 }

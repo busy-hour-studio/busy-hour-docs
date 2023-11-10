@@ -1,0 +1,40 @@
+---
+sidebar_position: 3
+sidebar_label: Deleting an App
+---
+
+import Prerequisites from '@site/src/components/docs/nodejs/Prerequisite';
+
+# Deleting an App
+
+:::danger
+Deleting any Busy Hour App will remove any access to the apps. Keep in mind that this action is irreversible and cannot be undone.
+:::
+
+In this section, we will show you how to delete a Busy Hour App.
+
+## Prerequisites
+
+<Prerequisites />
+
+## Deleting an App
+
+:::warning
+You can delete a Busy Hour App with any Master API Key or a Project API Key that only specificly for the project app you want to delete.
+:::
+
+To delete a Busy Hour App, you can use the `app.delete` function from the `@busy-hour/node` package. The function take a `appId` to delete as the argument.
+
+### Quick Example
+
+```ts title="src/main.ts"
+import BusyHourNode from '@busy-hour/node';
+
+// Create an instance of BusyHourNode with your API key (Master/Project)
+// highlight-next-line
+const nodeSdk = new BusyHourNode({ apiKey: 'your-api-key' });
+
+// highlight-start
+nodeSdk.app.delete('your-project-app-id');
+// highlight-end
+```

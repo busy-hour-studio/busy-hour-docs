@@ -1,0 +1,70 @@
+---
+sidebar_position: 2
+sidebar_label: Retrieving Apps
+---
+
+import Prerequisites from '@site/src/components/docs/nodejs/Prerequisite';
+
+# Retrieving Apps
+
+In this section, we will show you how to get a list or one of Busy Hour App.
+
+## Prerequisites
+
+<Prerequisites />
+
+## Retrieving Apps
+
+:::warning
+You can retrieve a list of Busy Hour App with any Master API Key or a Project API Key that only specificly for the project app you want to retrieve.
+:::
+
+To retrieve a list of Busy Hour App, you can use the `app.list` function from the `@busy-hour/node` package. The function take an object with the following properties:
+
+| Property    | Type                | Description                                       |
+| ----------- | ------------------- | ------------------------------------------------- |
+| `projectId` | `string` (optional) | The ID of the project that the app belong to |
+| `appName`   | `string` (optional) | The name of the app                               |
+| `limit`     | `number` (optional) | Total number of apps to retrieve, (default: 15)   |
+| `page`      | `number` (optional) | The page number of apps to retrieve, (default: 1) |
+
+### Quick Example
+
+```ts title="src/main.ts"
+import BusyHourNode from '@busy-hour/node';
+
+// Create an instance of BusyHourNode with your API key (Master/Project)
+// highlight-next-line
+const nodeSdk = new BusyHourNode({ apiKey: 'your-api-key' });
+
+// highlight-start
+nodeSdk.app.list({
+  projectId: 'your-project-id',
+  appName: 'your-app-name',
+  limit: 5,
+  page: 2,
+});
+// highlight-end
+```
+
+## Retrieving a App
+
+:::warning
+You can retrieve a Busy Hour App with any Master API Key or a Project API Key that only specificly for the project app you want to retrieve.
+:::
+
+To retrieve a Busy Hour App, you can use the `app.find` function from the `@busy-hour/node` package. The function take a `appId` to retrieve as the argument.
+
+### Quick Example
+
+```ts title="src/main.ts"
+import BusyHourNode from '@busy-hour/node';
+
+// Create an instance of BusyHourNode with your API key (Master/Project)
+// highlight-next-line
+const nodeSdk = new BusyHourNode({ apiKey: 'your-api-key' });
+
+// highlight-start
+nodeSdk.app.find('your-app-id');
+// highlight-end
+```
