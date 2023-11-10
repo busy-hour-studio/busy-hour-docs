@@ -1,0 +1,49 @@
+---
+sidebar_position: 1
+sidebar_label: Creating an App
+---
+
+import Prerequisites from '@site/src/components/docs/nodejs/Prerequisite';
+
+# Creating an App
+
+In this section, we will show you how to create a Busy Hour App.
+
+## Prerequisites
+
+<Prerequisites />
+
+## Creating an App
+
+:::warning
+You can create a Busy Hour App with any Master API Key or a Project API Key that only specificly for the project app you want to create.
+:::
+
+To create a Busy Hour App, you can use the `app.create` function from the `@busy-hour/node` package. The function take an object with the following properties:
+
+| Property      | Type                        | Description                                                                         |
+| ------------- | --------------------------- | ----------------------------------------------------------------------------------- |
+| `projectId`   | `string`                    | The ID of the project that the app will belong to                                   |
+| `displayName` | `string`                    | The name of the app                                                                 |
+| `platform`    | `web` \| `android` \| `ios` | The platform of the app will be deployed to                                         |
+| `bundleId`    | `string` \| `null`          | The bundleId of the app will be deployed to, set to `null` if the platform is `web` |
+
+### Quick Example
+
+```ts title="src/main.ts"
+import BusyHourNode from '@busy-hour/node';
+import { Platform } from '@busy-hour/node/enum';
+
+// Create an instance of BusyHourNode with your API key (Master/Project)
+// highlight-next-line
+const nodeSdk = new BusyHourNode({ apiKey: 'your-api-key' });
+
+// highlight-start
+nodeSdk.app.create({
+  projectId: 'your-project-id',
+  displayName: 'My Project',
+  platform: Platform.Web,
+  bundleId: null,
+});
+// highlight-end
+```

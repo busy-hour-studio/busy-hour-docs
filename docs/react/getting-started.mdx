@@ -94,13 +94,13 @@ export default function Index() {
 <summary>Without Hook</summary>
 
 ```tsx title="src/index.tsx"
-import React, { useEffect } from 'react'
-import { initializeApp } from '@busy-hour/react'
+import React, { useEffect } from 'react';
+import { initializeApp } from '@busy-hour/react';
 // Config file from Busy Hour Dashboard
-import busyConfig from './busyConfig.json'
+import busyConfig from './busyConfig.json';
 
 export default function Index() {
-  const [isAppInitialized, setIsAppInitialized] = useState(false)
+  const [isAppInitialized, setIsAppInitialized] = useState(false);
 
   useEffect(() => {
     (async () => {
@@ -110,18 +110,18 @@ export default function Index() {
         configFile: busyConfig,
         projectAppId: 'your-project-app-id',
         projectId: 'your-project-id',
-      })
+      });
       // highlight-end
 
-      setIsAppInitialized(true)
-    })()
-  }, [])
+      setIsAppInitialized(true);
+    })();
+  }, []);
 
   if (!isAppInitialized) {
-    return <div>Loading...</div>
+    return <div>Loading...</div>;
   }
 
-  return <App />
+  return <App />;
 }
 ```
 
@@ -146,8 +146,8 @@ In this example, the idea is that you request the auth data to your Backend and 
 <summary>With Hook</summary>
 
 ```tsx title="src/main.tsx"
-import React from 'react'
-import { useInitBusyService } from '@busy-hour/react/hooks'
+import React from 'react';
+import { useInitBusyService } from '@busy-hour/react/hooks';
 
 export default function Main() {
   // highlight-start
@@ -159,14 +159,14 @@ export default function Main() {
     serviceToken: 'your-user-service-token',
     // determine if the app should be initialized or not
     isShouldInit: true,
-  })
+  });
   // highlight-end
 
   if (!isServiceInitialized) {
-    return <div>Loading...</div>
+    return <div>Loading...</div>;
   }
 
-  return <MainApp />
+  return <MainApp />;
 }
 ```
 

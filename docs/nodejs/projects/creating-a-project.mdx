@@ -1,0 +1,45 @@
+---
+sidebar_position: 1
+sidebar_label: Creating a Project
+---
+
+import Prerequisites from '@site/src/components/docs/nodejs/Prerequisite';
+
+# Creating a Project
+
+:::danger
+Project creation is only available with a Master API Key or through the [Dashboard/Projects](https://busyhour.id/dashboard/projects).
+Since a Master API Key is the API Key with the highest permission level, please hide it securely so no one can access it directly.
+:::
+
+In this section, we will show you how to create a Busy Hour Project.
+
+## Prerequisites
+
+<Prerequisites />
+
+## Creating a Project
+
+To create a Busy Hour Project, you can use the `project.create` function from the `@busy-hour/node` package. The function take an object with the following properties:
+
+| Property      | Type     | Description                    |
+| ------------- | -------- | ------------------------------ |
+| `name`        | `string` | The name of the project        |
+| `description` | `string` | The description of the project |
+
+### Quick Example
+
+```ts title="src/main.ts"
+import BusyHourNode from '@busy-hour/node';
+
+// Create an instance of BusyHourNode with your API key (Master/Project)
+// highlight-next-line
+const nodeSdk = new BusyHourNode({ apiKey: 'your-api-key' });
+
+// highlight-start
+nodeSdk.project.create({
+  name: 'My Project',
+  description: 'This is my project',
+});
+// highlight-end
+```

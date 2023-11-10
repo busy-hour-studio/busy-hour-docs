@@ -1,0 +1,39 @@
+---
+sidebar_position: 4
+sidebar_label: Deleting a User
+---
+
+import Prerequisites from '@site/src/components/docs/nodejs/Prerequisite';
+
+# Deleting a User
+
+:::danger
+Deleting any Busy Hour User will remove any access to the project/apps. Keep in mind that this action is irreversible and cannot be undone.
+:::
+
+In this section, we will show you how to delete a Busy Hour User.
+
+## Prerequisites
+
+<Prerequisites />
+
+## Deleting a User
+
+:::warning
+You can delete a Busy Hour User with any Master API Key or a Project API Key that only specificly for the project user you want to delete.
+:::
+
+To delete a Busy Hour User, you can use the `user.delete` function from the `@busy-hour/node` package. The function take a `userId` to delete as the argument.
+
+### Quick Example
+```ts title="src/main.ts"
+import BusyHourNode from '@busy-hour/node';
+
+// Create an instance of BusyHourNode with your API key (Master/Project)
+// highlight-next-line
+const nodeSdk = new BusyHourNode({ apiKey: 'your-api-key' });
+
+// highlight-start
+nodeSdk.user.delete('your-user-id');
+// highlight-end
+```

@@ -1,0 +1,9 @@
+{
+  "label": "Project Management",
+  "position": 1,
+  "link": {
+    "slug": "nodejs/projects",
+    "type": "generated-index",
+    "description": "Learn more about Busy Hour Project Management in Node Js."
+  }
+}
