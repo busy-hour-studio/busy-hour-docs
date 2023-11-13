@@ -5,7 +5,7 @@ import HomepageHeader from '../components/HomePage/HomePageHeader';
 
 function Home() {
   return (
-    <Layout description="Description will go into a meta tag in <head />">
+    <Layout description="in-app messaging/call/feeds without headaches">
       <HomepageHeader />
       <main>
         <HomepageFeatures />
