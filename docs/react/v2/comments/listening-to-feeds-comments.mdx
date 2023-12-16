@@ -1,0 +1,53 @@
+---
+sidebar_position: 1
+sidebar_label: Listening to Activity Feeds Comments
+---
+
+import ActivityFeedPrerequisites from '@site/src/components/docs/shared/prerequisites/react-react-native/ActivityFeed';
+
+# Listening to Activity Feeds Comments
+
+In this section, we will show you how to listen to activity feeds comments from the activity feeds comments service.
+
+## Prerequisites
+
+<ActivityFeedPrerequisites />
+
+## Listen to Latest Activity Feeds Comments
+
+To listen to all latest activity feeds, you can use the `useLastCommentListener` hook which is exported from the `@busy-hour/react/hooks` or `@busy-hour/react/hooks/v2` package. The hook then will return an object detailed as below:
+
+| Property                    | Type        | Description                             |
+| --------------------------- | ----------- | --------------------------------------- |
+| `comments`                  | `Comment[]` | The last activity feeds comments        |
+| `listenLastComments`        | `function`  | Listen to latest activity feed comments |
+| `removeLastCommentListener` | `function`  | Remove the listener                     |
+
+### Quick Example
+
+```tsx title="src/main.tsx"
+import React, { useEffect } from 'react';
+import { useLastCommentListener } from '@busy-hour/react/hooks';
+
+export default function Main() {
+  // highlight-next-line
+  const { comments, listenLastComments, removeLastCommentListener } =
+    useLastCommentListener({
+      feedId: 'feed-id',
+    });
+
+  useEffect(() => {
+    // highlight-start
+    // Start listening to all incoming last messages
+    listenLastFeeds();
+
+    return () => {
+      // Stop listening to all incoming last messages
+      removeLastFeedListener();
+    };
+    // highlight-end
+  }, []);
+
+  return <MainApp />;
+}
+```

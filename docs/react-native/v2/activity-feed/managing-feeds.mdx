@@ -15,18 +15,18 @@ In this section, we will show you how to manage activity feeds from the activity
 
 ## Managing Activity Feeds
 
-To start managing your activity feeds (e.g. `create`, `delete`, etc.), you will need to use the `useFeedManager` hook which is exported from the `@busy-hour/react-native/hooks` or `@busy-hour/react-native/hooks/v2` package. To use it, you just need to call it like any other hook and it will return an object. For more detail about the properties see the detail from this table:
+To start managing your activity feeds (e.g. `create`, `delete`, etc.), you will need to use the `useFeedManager` hook which is exported from the `@busy-hour/react-native/hooks` or `@busy-hour/react-native/hooks/v2` package. The hook then will return an object detailed as below:
 
 | Property      | Type       | Description                      |
 | ------------- | ---------- | -------------------------------- |
 | `createFeed`  | `function` | Create a new activity feed       |
 | `deleteFeed`  | `function` | Delete an existing activity feed |
-| `likeFeed`    | `function` | Listen to activity feeds         |
-| `dislikeFeed` | `function` | Remove the listener              |
+| `likeFeed`    | `function` | Like an activity feed            |
+| `dislikeFeed` | `function` | Dislike an activity feed         |
 
 ## Creating Activity Feeds
 
-To create an activity feed, you can use the `createFeed` function which is one of the return properties of the `useFeedManager` hook. To use it, you need to pass some properties which detailed below.
+To create an activity feed, you can use the `createFeed` function which is one of the return properties of the `useFeedManager` hook. To use it, you need to pass some properties which detailed as below.
 
 | Property      | Type                          | Description                                  |
 | ------------- | ----------------------------- | -------------------------------------------- |
