@@ -1,0 +1,231 @@
+---
+sidebar_position: 2
+sidebar_label: Managing Chats
+---
+
+import MessagingPrerequisites from '@site/src/components/docs/shared/prerequisites/react-react-native/Messaging';
+
+# Managing Chat Messages
+
+In this section, we will show you how to manage chat messages from the messaging service.
+
+## Prerequisites
+
+<MessagingPrerequisites />
+
+## Managing Chat Messages
+
+To start managing your chat messages (e.g. `create`, `update`, `delete`, etc.), you will need to use the `useChatManager` hook which is exported from the `@busy-hour/react/hooks` or `@busy-hour/react/hooks/v2` package. To use it, you just need to call it like any other hook and it will return an object. For more detail about the properties see the detail from this table:
+
+| Property       | Type       | Description                       |
+| -------------- | ---------- | --------------------------------- |
+| `createChat`   | `function` | Create a new chat message         |
+| `updateChat`   | `function` | Update an existing chat message   |
+| `deleteChat`   | `function` | Delete an existing chat message   |
+| `addMember`    | `function` | Add member to the chat message    |
+| `removeMember` | `function` | Remove member to the chat message |
+| `leaveChat`    | `function` | Leave from chat message           |
+
+## Creating Chat Messages
+
+To create a chat message, you can use the `createChat` function which is one of the return properties of the `useChatManager` hook. To use it, you need to pass some properties which detailed below.
+
+| Property      | Type                  | Description                                     |
+| ------------- | --------------------- | ----------------------------------------------- |
+| `avatar`      | `string` (optional)   | The avatar of the chat messages                 |
+| `name`        | `string` (optional)   | The name of the chat messages                   |
+| `description` | `string` (optional)   | The description of the chat messages            |
+| `metadata`    | `object` (optional)   | The metadata of the chat message                |
+| `type`        | `ChatType` (optional) | The type of the chat message                    |
+| `members`     | `Member[]`            | List of member to be added to the chat messages |
+
+### Member Object
+
+| Property | Type       | Description           |
+| -------- | ---------- | --------------------- |
+| `userId` | `string`   | User id to be added   |
+| `role`   | `ChatRole` | User role to be added |
+
+### Quick Example
+
+```tsx
+import { useChatManager } from '@busy-hour/react/hooks';
+import { ChatType, ChatRole } from '@busy-hour/react/enums/v2';
+
+export default function Main() {
+  // highlight-next-line
+  const { createChat } = useChatManager();
+
+  const createChatMessages = async () => {
+    // highlight-start
+    return createChat({
+      name: 'My Group',
+      description: 'This is my group',
+      // can be ChatType.PRIVATE, ChatType.GROUP, ChatType.PERSONAL, or any custom type
+      type: ChatType.GROUP,
+      members: [
+        {
+          userId: 'your-user-id',
+          role: ChatRole.ADMIN,
+        },
+        {
+          userId: 'other-user-id',
+          role: ChatRole.MEMBER,
+        },
+      ],
+    });
+    // highlight-end
+  };
+
+  return <MainApp />;
+}
+```
+
+## Updating Chat Messages
+
+To update a chat message, you can use the `updateChat` function which is one of the return properties of the `useChatManager` hook. To use it, you need to pass some properties which detailed below.
+
+| Property      | Type                | Description                          |
+| ------------- | ------------------- | ------------------------------------ |
+| `avatar`      | `string` (optional) | The avatar of the chat messages      |
+| `name`        | `string` (optional) | The name of the chat messages        |
+| `description` | `string` (optional) | The description of the chat messages |
+| `metadata`    | `object` (optional) | The metadata of the chat message     |
+
+### Quick Example
+
+```tsx
+import { useChatManager } from '@busy-hour/react/hooks';
+import { ChatType, ChatRole } from '@busy-hour/react/enums/v2';
+
+export default function Main() {
+  // highlight-next-line
+  const { updateChat } = useChatManager();
+
+  const updateChatMessages = async () => {
+    // highlight-start
+    return updateChat({
+      name: 'My New Group',
+      description: 'This is my new group',
+      // Custom data for the chat
+      metadata: {
+        key: 'value',
+      },
+    });
+    // highlight-end
+  };
+
+  return <MainApp />;
+}
+```
+
+## Deleting Chat Messages
+
+To delete a chat message, you can use the `deleteChat` function which is one of the return properties of the `useChatManager` hook. To use it, you just need to pass the `chatId` to delete.
+
+### Quick Example
+
+```tsx
+import { useChatManager } from '@busy-hour/react-native/hooks';
+
+export default function Main() {
+  // highlight-next-line
+  const { deleteChat } = useChatManager();
+
+  const deleteChatMessages = async () => {
+    // highlight-next-line
+    return deleteChat('chat-id');
+  };
+
+  return <MainApp />;
+}
+```
+
+## Adding Members
+
+To add a member to a chat message, you can use the `addMember` function which is one of the return properties of the `useChatManager` hook. To use it, you need to pass some properties which detailed below.
+
+| Property  | Type       | Description                                     |
+| --------- | ---------- | ----------------------------------------------- |
+| `chatId`  | `string`   | Chat id to be updated                           |
+| `members` | `Member[]` | List of member to be added to the chat messages |
+
+### Quick Example
+
+```tsx
+import { useChatManager } from '@busy-hour/react-native/hooks';
+import { ChatRole } from '@busy-hour/react-native/enums/v2';
+
+export default function Main() {
+  // highlight-next-line
+  const { addMember } = useChatManager();
+
+  const addChatMembers = async () => {
+    // highlight-start
+    return addMember('chat-id', [
+      {
+        userId: 'other-user-id-1',
+        role: ChatRole.ADMIN,
+      },
+      {
+        userId: 'other-user-id-2',
+        role: 'your-custom-role',
+      },
+    ]);
+    // highlight-end
+  };
+
+  return <MainApp />;
+}
+```
+
+## Removing Members
+
+To remove a member to a chat message, you can use the `removeMember` function which is one of the return properties of the `useChatManager` hook. To use it, you need to pass some properties which detailed below.
+
+| Property  | Type       | Description                                                 |
+| --------- | ---------- | ----------------------------------------------------------- |
+| `chatId`  | `string`   | Chat id to be updated                                       |
+| `members` | `string[]` | List of member user id to be removed from the chat messages |
+
+### Quick Example
+
+```tsx
+import { useChatManager } from '@busy-hour/react-native/hooks';
+
+export default function Main() {
+  // highlight-next-line
+  const { removeMember } = useChatManager();
+
+  const removeChatMembers = async () => {
+    // highlight-start
+    return removeMember('chat-id', ['other-user-id-1', 'other-user-id-2']);
+    // highlight-end
+  };
+
+  return <MainApp />;
+}
+```
+
+## Leave Chat
+
+To leave a chat message, you can use the `leaveChat` function which is one of the return properties of the `useChatManager` hook. To use it, you just need to pass the `chatId` to leave.
+
+### Quick Example
+
+```tsx
+import { useChatManager } from '@busy-hour/react-native/hooks';
+
+export default function Main() {
+  // highlight-next-line
+  const { leaveChat } = useChatManager();
+
+  const leaveChatMessages = async () => {
+    // highlight-start
+    return leaveChat('chat-id');
+    // highlight-end
+  };
+
+  return <MainApp />;
+}
+```

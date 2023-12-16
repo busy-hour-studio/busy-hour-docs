@@ -1,0 +1,90 @@
+---
+sidebar_position: 3
+sidebar_label: Handling Chat Messaging
+---
+
+import MessagingPrerequisites from '@site/src/components/docs/shared/prerequisites/react-react-native/Messaging';
+
+# Handling Chat Messaging
+
+In this section, we will show you how to manage chat messages from the messaging service.
+
+## Prerequisites
+
+<MessagingPrerequisites />
+
+## Handling Chat Messaging
+
+To start handling current/selected chats, you will need to use `useChatMessaging` hook which is exported from the `@busy-hour/react/hooks` or `@busy-hour/react/hooks/v2` package. To use it, you just need to pass a config object which detailed below:
+
+| Property  | Type                       | Description                                         |
+| --------- | -------------------------- | --------------------------------------------------- |
+| `chatId`  | `string`                   | Chat id to retrieve messages                        |
+| `orderBy` | `asc` \| `desc` (optional) | Order of the messages to retrieve (default: `desc`) |
+| `limit`   | `number` (optional)        | Total message to retrieve (default: `undefined`) |
+
+Once the hook is called, it will return an object that contains `messages` and `sendMessage`. For more detail about the properties see the detail from this table:
+
+| Property      | Type        | Description                |
+| ------------- | ----------- | -------------------------- |
+| `messages`    | `message[]` | The messages in the chat   |
+| `sendMessage` | `function`  | Send a message to the chat |
+
+### Quick Example
+
+```tsx title="src/main.tsx"
+
+import React, { useEffect } from 'react'
+import { useChatMessaging } from '@busy-hour/react/hooks'
+
+export default function Main() {
+  // highlight-start
+  const { messages, sendMessage } = useChatMessaging({
+    chatId: 'the-chat-id-to-listen-to',
+  })
+  // highlight-end
+
+  return <MainApp />
+}
+```
+
+## Sending Messages
+
+To send a message, you can use the `sendMessage` function which is one of the return properties of the `useChatMessages` hook. To use it, you need to pass some properties which detailed below:
+
+| Property      | Type        | Description                |
+| ------------- | ----------- | -------------------------- |
+| `message`    | `string` (optional) | The message to send   |
+| `attachments` | `Attachment[]` (optional)  | Attachment data to send |
+| `custom`      | `object` (optional) | The custom message to send |
+| `type`        | `message` | `string` (optional) | The type of the message |
+
+
+### Attachment Object
+
+| Property | Type     | Description            |
+| -------- | -------- | ---------------------- |
+| `uri`    | `string` | URI of the attachment  |
+| `name`   | `string` | Name of the attachment |
+| `type`   | `string` | Type of the attachment |
+
+### Quick Example
+
+```tsx
+import { useChatMessaging } from '@busy-hour/react/hooks';
+
+export default function Main() {
+  // highlight-start
+  const { sendMessage } = useChatMessaging({
+    chatId: 'the-chat-id-to-listen-to',
+  });
+  // highlight-end
+
+  const sendNewMessage = useCallback((payload: unknown) => {
+    sendMessage(payload)
+  }, [sendMessage]);
+
+  return <MainApp />
+
+}
+```
