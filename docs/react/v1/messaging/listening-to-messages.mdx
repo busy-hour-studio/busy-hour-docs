@@ -15,7 +15,7 @@ In this section, we will show you how to listen to messages from the messaging s
 
 ## Listen to Latest Messages
 
-To listen to all latest messages (e.g. `group only`, `private only`, or `both`), you can use the `useLastMessageListener` hook which is exported from the `@busy-hour/react/hooks` package. The hook will return an object that contains `privates`, `groups`, `messages`, `listenLastMessages`, and `removeLastMessageListener`. For more detail about the properties see the detail from this table:
+To listen to all latest messages (e.g. `group only`, `private only`, or `both`), you can use the `useLastMessageListener` hook which is exported from the `@busy-hour/react/hooks/v1` package. The hook will return an object that contains `privates`, `groups`, `messages`, `listenLastMessages`, and `removeLastMessageListener`. For more detail about the properties see the detail from this table:
 
 | Property                    | Type        | Description                         |
 | --------------------------- | ----------- | ----------------------------------- |
@@ -30,9 +30,9 @@ To listen to all latest messages (e.g. `group only`, `private only`, or `both`),
 ```tsx title="src/main.tsx"
 
 import React, { useEffect } from 'react'
-import { useLastMessageListener } from '@busy-hour/react/hooks'
+import { useLastMessageListener } from '@busy-hour/react/hooks/v1'
 
-export default Main() {
+export default function Main() {
   // highlight-next-line
   const { listenLastMessages, removeLastMessageListener } = useLastMessageListener()
 
@@ -55,7 +55,7 @@ export default Main() {
 
 ## Listen to Specific Incoming Messages
 
-To listen to specific messages (e.g `group with specific id` or `private with specific id`), your can use the `useChatMessages` hook which is exported from the `@busy-hour/react/hooks` package. The hook accept an object as the argument, for more detail about the argument properties see the detail from this table:
+To listen to specific messages (e.g `group with specific id` or `private with specific id`), your can use the `useChatMessages` hook which is exported from the `@busy-hour/react/hooks/v1` package. The hook accept an object as the argument, for more detail about the argument properties see the detail from this table:
 
 | Property | Type                       | Description                                        |
 | -------- | -------------------------- | -------------------------------------------------- |
@@ -76,9 +76,9 @@ The hook itself will return an object that contains `messages` and `sendMessage`
 ```tsx title="src/main.tsx"
 
 import React, { useEffect } from 'react'
-import { useChatMessages } from '@busy-hour/react/hooks'
+import { useChatMessages } from '@busy-hour/react/hooks/v1'
 
-export default Main() {
+export default function Main() {
   // highlight-start
   const { mesages, sendMessage } = useChatMessages({
     type: 'private',

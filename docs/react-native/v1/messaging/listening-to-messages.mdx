@@ -30,9 +30,9 @@ To listen to all latest messages (e.g. `group only`, `private only`, or `both`),
 ```tsx title="src/main.tsx"
 
 import React, { useEffect } from 'react'
-import { useLastMessageListener } from '@busy-hour/react-native/hooks'
+import { useLastMessageListener } from '@busy-hour/react-native/hooks/v1'
 
-export default Main() {
+export default function Main() {
   // highlight-next-line
   const { listenLastMessages, removeLastMessageListener } = useLastMessageListener()
 
@@ -76,9 +76,9 @@ The hook itself will return an object that contains `messages` and `sendMessage`
 ```tsx title="src/main.tsx"
 
 import React, { useEffect } from 'react'
-import { useChatMessages } from '@busy-hour/react-native/hooks'
+import { useChatMessages } from '@busy-hour/react-native/hooks/v1'
 
-export default Main() {
+export default function Main() {
   // highlight-start
   const { mesages, sendMessage } = useChatMessages({
     type: 'private',

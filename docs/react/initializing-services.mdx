@@ -23,7 +23,7 @@ To use the activity feeds functionality, you need to initialize the activity fee
 ```tsx title="src/main.tsx"
 import { useInitActivityFeed } from '@busy-hour/react/hooks';
 
-export default Main() {
+export default function Main() {
   // highlight-start
   // We recommend you to use a state as the argument instead of fixed value
   // therefore the initialization will only happen once the service are initialized
@@ -55,7 +55,7 @@ To initialize only the messaging service without the notification, you can use t
 ```tsx title="src/main.tsx"
 import { useInitMessaging } from '@busy-hour/react/hooks';
 
-export default Main() {
+export default function Main() {
   // highlight-start
   // We recommend you to use a state as the argument instead of fixed value
   // therefore the initialization will only happen once the service are initialized
@@ -82,7 +82,7 @@ When initializing the notification service, you will get an object as the return
 ```tsx title="src/main.tsx"
 import { useInitNotification } from '@busy-hour/react/hooks';
 
-export default Main() {
+export default function Main() {
   // highlight-start
   // We recommend you to use a state as the argument instead of fixed value
   // therefore the initialization will only happen once the service are initialized
