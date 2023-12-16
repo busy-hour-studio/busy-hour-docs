@@ -29,9 +29,9 @@ To listen to all latest activity feeds, you can use the `useLastFeedListener` ho
 ```tsx title="src/main.tsx"
 
 import React, { useEffect } from 'react'
-import { useLastFeedListener } from '@busy-hour/react-native/hooks'
+import { useLastFeedListener } from '@busy-hour/react-native/hooks/v1'
 
-export default Main() {
+export default function Main() {
   // highlight-next-line
   const { listenLastFeeds, removeLastFeedListener } = useLastFeedListener()
 
