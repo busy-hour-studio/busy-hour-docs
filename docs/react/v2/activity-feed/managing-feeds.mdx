@@ -15,18 +15,18 @@ In this section, we will show you how to manage activity feeds from the activity
 
 ## Managing Activity Feeds
 
-To start managing your activity feeds (e.g. `create`, `delete`, etc.), you will need to use the `useFeedManager` hook which is exported from the `@busy-hour/react/hooks` or `@busy-hour/react/hooks/v2` package. To use it, you just need to call it like any other hook and it will return an object. For more detail about the properties see the detail from this table:
+To start managing your activity feeds (e.g. `create`, `delete`, etc.), you will need to use the `useFeedManager` hook which is exported from the `@busy-hour/react/hooks` or `@busy-hour/react/hooks/v2` package. The hook then will return an object detailed as below:
 
 | Property      | Type       | Description                      |
 | ------------- | ---------- | -------------------------------- |
 | `createFeed`  | `function` | Create a new activity feed       |
 | `deleteFeed`  | `function` | Delete an existing activity feed |
-| `likeFeed`    | `function` | Listen to activity feeds         |
-| `dislikeFeed` | `function` | Remove the listener              |
+| `likeFeed`    | `function` | Like an activity feed            |
+| `dislikeFeed` | `function` | Dislike an activity feed         |
 
 ## Creating Activity Feeds
 
-To create an activity feed, you can use the `createFeed` function which is one of the return properties of the `useFeedManager` hook. To use it, you need to pass some properties which detailed below.
+To create an activity feed, you can use the `createFeed` function which is one of the return properties of the `useFeedManager` hook. To use it, you need to pass some properties which detailed as below.
 
 | Property      | Type                          | Description                                  |
 | ------------- | ----------------------------- | -------------------------------------------- |
@@ -39,12 +39,11 @@ To create an activity feed, you can use the `createFeed` function which is one o
 ### Quick Example
 
 ```tsx title="src/main.tsx"
-
 import { useFeedManager } from '@busy-hour/react/hooks';
 
 export default function Main() {
   // highlight-next-line
-  const { createFeed } = useFeedManager()
+  const { createFeed } = useFeedManager();
 
   const createNewFeed = () => {
     // highlight-start
@@ -54,15 +53,14 @@ export default function Main() {
       description: 'This is a new activity feed',
       // Custom properties for the activity feed
       custom: {
-        color: '#ff0000'
-      }
-    })
+        color: '#ff0000',
+      },
+    });
     // highlight-end
-  }
+  };
 
   return <MainApp />;
 }
-
 ```
 
 ## Deleting Activity Feeds
@@ -72,18 +70,17 @@ To delete an activity feed, you can use the `deleteFeed` function which is one o
 ### Quick Example
 
 ```tsx title="src/main.tsx"
-
 import { useFeedManager } from '@busy-hour/react/hooks';
 
 export default function Main() {
   // highlight-next-line
-  const { deleteFeed } = useFeedManager()
+  const { deleteFeed } = useFeedManager();
 
   const deleteExistingFeed = () => {
     // highlight-start
-    return deleteFeed('the-feed-id')
+    return deleteFeed('the-feed-id');
     // highlight-end
-  }
+  };
 
   return <MainApp />;
 }
@@ -96,18 +93,17 @@ To like an activity feed, you can use the `likeFeed` function which is one of th
 ### Quick Example
 
 ```tsx title="src/main.tsx"
-
 import { useFeedManager } from '@busy-hour/react/hooks';
 
 export default function Main() {
   // highlight-next-line
-  const { likeFeed } = useFeedManager()
+  const { likeFeed } = useFeedManager();
 
   const likeExistingFeed = () => {
     // highlight-start
-    return likeFeed('the-feed-id', false) // Do not remove the like
+    return likeFeed('the-feed-id', false); // Do not remove the like
     // highlight-end
-  }
+  };
 
   return <MainApp />;
 }
@@ -120,18 +116,17 @@ To like an activity feed, you can use the `dislikeFeed` function which is one of
 ### Quick Example
 
 ```tsx title="src/main.tsx"
-
 import { useFeedManager } from '@busy-hour/react/hooks';
 
 export default function Main() {
   // highlight-next-line
-  const { dislikeFeed } = useFeedManager()
+  const { dislikeFeed } = useFeedManager();
 
   const dislikeExistingFeed = () => {
     // highlight-start
-    return dislikeFeed('the-feed-id', true) // remove the dislike
+    return dislikeFeed('the-feed-id', true); // remove the dislike
     // highlight-end
-  }
+  };
 
   return <MainApp />;
 }
