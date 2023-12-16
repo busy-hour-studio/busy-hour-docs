@@ -7,7 +7,7 @@ import MessagingPrerequisites from '@site/src/components/docs/shared/prerequisit
 
 # Handling Chat Messaging
 
-In this section, we will show you how to manage chat messages from the messaging service.
+In this section, we will show you how to handle chat messages from the messaging service.
 
 ## Prerequisites
 
@@ -15,20 +15,23 @@ In this section, we will show you how to manage chat messages from the messaging
 
 ## Handling Chat Messaging
 
-To start handling current/selected chats, you will need to use `useChatMessaging` hook which is exported from the `@busy-hour/react-native/hooks` or `@busy-hour/react-native/hooks/v2` package. To use it, you just need to pass a config object which detailed below:
+To start handling current/selected chats, you will need to use `useChatMessaging` hook which is exported from the `@busy-hour/react/hooks` or `@busy-hour/react/hooks/v2` package. To use it, you just need to pass a config object which detailed below:
 
-| Property  | Type                       | Description                                         |
-| --------- | -------------------------- | --------------------------------------------------- |
-| `chatId`  | `string`                   | Chat id to retrieve messages                        |
-| `orderBy` | `asc` \| `desc` (optional) | Order of the messages to retrieve (default: `desc`) |
-| `limit`   | `number` (optional)        | Total message to retrieve (default: `undefined`) |
+| Property         | Type                       | Description                                                          |
+| ---------------- | -------------------------- | -------------------------------------------------------------------- |
+| `chatId`         | `string`                   | Chat id to retrieve messages                                         |
+| `orderBy`        | `asc` \| `desc` (optional) | Order of the messages to retrieve (default: `desc`)                  |
+| `limit`          | `number` (optional)        | Total message to retrieve (default: `undefined`)                     |
+| `isShouldListen` | `boolean` (optional)       | Determine if it should listen on mount or not (default: `undefined`) |
 
 Once the hook is called, it will return an object that contains `messages` and `sendMessage`. For more detail about the properties see the detail from this table:
 
-| Property      | Type        | Description                |
-| ------------- | ----------- | -------------------------- |
-| `messages`    | `message[]` | The messages in the chat   |
-| `sendMessage` | `function`  | Send a message to the chat |
+| Property                     | Type        | Description                      |
+| ---------------------------- | ----------- | -------------------------------- |
+| `messages`                   | `message[]` | The messages in the chat         |
+| `sendMessage`                | `function`  | Send a message to the chat       |
+| `listenChatMessages`         | `function`  | Start listening to chat messages |
+| `removeChatMessagesListener` | `function`  | Stop listening to chat messages  |
 
 ### Quick Example
 
@@ -41,6 +44,7 @@ export default function Main() {
   // highlight-start
   const { messages, sendMessage } = useChatMessaging({
     chatId: 'the-chat-id-to-listen-to',
+    isShouldListen: true,
   })
   // highlight-end
 
