@@ -15,12 +15,11 @@ In this section, we will show you how to listen to activity feeds from the activ
 
 ## Listen to Latest Activity Feeds
 
-To listen to all latest activity feeds, you can use the `useLastFeedListener` hook which is exported from the `@busy-hour/react/hooks/v1` package. The hook then will return an object detailed as below:
+To listen to all latest activity feeds, you can use the `useLastFeedListener` hook which is exported from the `@busy-hour/react/hooks` or `@busy-hour/react/hooks/v2` package. The hook will return an object that can be use to track the latest `feeds`. For more detail about the properties see the detail from this table:
 
 | Property                 | Type             | Description                                 |
 | ------------------------ | ---------------- | ------------------------------------------- |
 | `feeds`                  | `ActivityFeed[]` | The last activity feeds                     |
-| `myFeeds`                | `ActivityFeed[]` | The last activity feeds of the current user |
 | `listenLastFeeds`        | `function`       | Listen to latest activity feeds             |
 | `removeLastFeedListener` | `function`       | Remove the listener                         |
 
@@ -29,7 +28,7 @@ To listen to all latest activity feeds, you can use the `useLastFeedListener` ho
 ```tsx title="src/main.tsx"
 
 import React, { useEffect } from 'react'
-import { useLastFeedListener } from '@busy-hour/react/hooks/v1'
+import { useLastFeedListener } from '@busy-hour/react/hooks'
 
 export default function Main() {
   // highlight-next-line
