@@ -1,6 +1,6 @@
 // Note: type annotations allow type checking and IDEs autocompletion
 
-import type { Config } from '@docusaurus/types';
+import type * as Preset from '@docusaurus/preset-classic';
 import { themes } from 'prism-react-renderer';
 
 const lightCodeTheme = themes.github;
@@ -157,6 +157,6 @@ const config = {
       },
     },
   plugins: ['docusaurus-plugin-sass'],
-} satisfies Config;
+} satisfies Preset.ThemeConfig;
 
 module.exports = config;
