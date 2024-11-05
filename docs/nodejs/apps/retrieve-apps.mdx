@@ -13,7 +13,7 @@ In this section, we will show you how to get a list or one of Busy Hour App.
 
 <Prerequisites />
 
-## Retrieving Apps
+## Retrieving Multiple Apps
 
 :::warning
 You can retrieve a list of Busy Hour App with any Master API Key or a Project API Key that only specificly for the project app you want to retrieve.
@@ -31,11 +31,12 @@ To retrieve a list of Busy Hour App, you can use the `app.list` function from th
 ### Quick Example
 
 ```ts title="src/main.ts"
-import BusyHourNode from '@busy-hour/node';
+import { BusyHourNode } from '@busy-hour/node';
 
 // Create an instance of BusyHourNode with your API key (Master/Project)
-// highlight-next-line
-const nodeSdk = new BusyHourNode({ apiKey: 'your-api-key' });
+const nodeSdk = new BusyHourNode({
+  apiToken: 'your-api-token',
+});
 
 // highlight-start
 nodeSdk.app.list({
@@ -47,7 +48,7 @@ nodeSdk.app.list({
 // highlight-end
 ```
 
-## Retrieving a App
+## Retrieving an App
 
 :::warning
 You can retrieve a Busy Hour App with any Master API Key or a Project API Key that only specificly for the project app you want to retrieve.
@@ -58,13 +59,16 @@ To retrieve a Busy Hour App, you can use the `app.find` function from the `@busy
 ### Quick Example
 
 ```ts title="src/main.ts"
-import BusyHourNode from '@busy-hour/node';
+import { BusyHourNode } from '@busy-hour/node';
 
 // Create an instance of BusyHourNode with your API key (Master/Project)
-// highlight-next-line
-const nodeSdk = new BusyHourNode({ apiKey: 'your-api-key' });
+const nodeSdk = new BusyHourNode({
+  apiToken: 'your-api-token',
+});
 
 // highlight-start
-nodeSdk.app.find('your-app-id');
+nodeSdk.app.find({
+  projectAppId: 'your-app-id'
+});
 // highlight-end
 ```

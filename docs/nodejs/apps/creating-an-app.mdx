@@ -26,24 +26,26 @@ To create a Busy Hour App, you can use the `app.create` function from the `@busy
 | `projectId`   | `string`                    | The ID of the project that the app will belong to                                   |
 | `displayName` | `string`                    | The name of the app                                                                 |
 | `platform`    | `web` \| `android` \| `ios` | The platform of the app will be deployed to                                         |
-| `bundleId`    | `string` \| `null`          | The bundleId of the app will be deployed to, set to `null` if the platform is `web` |
+| `bundleId`    | `string` (optional)         | The bundleId of the app will be deployed to, set to `null` if the platform is `web` |
 
 ### Quick Example
 
 ```ts title="src/main.ts"
-import BusyHourNode from '@busy-hour/node';
-import { Platform } from '@busy-hour/node/enum';
+import { BusyHourNode } from '@busy-hour/node';
 
 // Create an instance of BusyHourNode with your API key (Master/Project)
-// highlight-next-line
-const nodeSdk = new BusyHourNode({ apiKey: 'your-api-key' });
+const nodeSdk = new BusyHourNode({
+  apiToken: 'your-api-token',
+});
 
 // highlight-start
 nodeSdk.app.create({
-  projectId: 'your-project-id',
-  displayName: 'My Project',
-  platform: Platform.Web,
-  bundleId: null,
+  payload: {
+    projectId: 'your-project-id',
+    displayName: 'My Project',
+    platform: 'web',
+    bundleId: null,
+  }
 });
 // highlight-end
 ```

@@ -27,13 +27,16 @@ To delete a Busy Hour User, you can use the `user.delete` function from the `@bu
 
 ### Quick Example
 ```ts title="src/main.ts"
-import BusyHourNode from '@busy-hour/node';
+import { BusyHourNode } from '@busy-hour/node';
 
 // Create an instance of BusyHourNode with your API key (Master/Project)
-// highlight-next-line
-const nodeSdk = new BusyHourNode({ apiKey: 'your-api-key' });
+const nodeSdk = new BusyHourNode({
+  apiToken: 'your-api-token',
+});
 
 // highlight-start
-nodeSdk.user.delete('your-user-id');
+nodeSdk.user.delete({
+  userId: 'your-user-id',
+});
 // highlight-end
 ```

@@ -21,28 +21,32 @@ You can update a Busy Hour User with any Master API Key or a Project API Key tha
 
 To update a Busy Hour App, you can use the `user.update` function from the `@busy-hour/node` package. The function take an object with the following properties:
 
-| Property     | Type               | Description                                      |
-| ------------ | ------------------ | ------------------------------------------------ |
-| `userId`       | `string`           | The ID of the user                               |
-| `avatar`     | `string` \| `null` | The avatar of the user                           |
-| `nickname`   | `string`           | The nickname of the user                         |
-| `attributes` | `object`           | Any custom attributes of the user in JSON format |
+| Property     | Type                | Description                                      |
+| ------------ | ------------------- | ------------------------------------------------ |
+| `userId`     | `string`            | The ID of the user                               |
+| `avatar`     | `string` (optional) | The avatar of the user                           |
+| `nickname`   | `string`            | The nickname of the user                         |
+| `attributes` | `object`            | Any custom attributes of the user in JSON format |
 
 ### Quick Example
 
 ```ts title="src/main.ts"
-import BusyHourNode from '@busy-hour/node';
+import { BusyHourNode } from '@busy-hour/node';
 
 // Create an instance of BusyHourNode with your API key (Master/Project)
-// highlight-next-line
-const nodeSdk = new BusyHourNode({ apiKey: 'your-api-key' });
+const nodeSdk = new BusyHourNode({
+  apiToken: 'your-api-token',
+});
 
 // highlight-start
-nodeSdk.user.update('your-user-id', {
-  avatar: null,
-  nickname: 'your-user-nickname',
-  attributes: {
-    'your-custom-attribute-key': 'your-custom-attribute-value',
+nodeSdk.user.update({
+  userId: 'your-user-id',
+  payload: {
+    avatar: null,
+    nickname: 'your-user-nickname',
+    attributes: {
+      'your-custom-attribute-key': 'your-custom-attribute-value',
+    },
   },
 });
 // highlight-end
