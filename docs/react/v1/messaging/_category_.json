@@ -1,9 +1,0 @@
-{
-  "label": "v1 React Messaging",
-  "position": 1,
-  "link": {
-    "slug": "react/v1/messaging",
-    "type": "generated-index",
-    "description": "Learn more about Busy Hour Messaging implementation in React."
-  }
-}
