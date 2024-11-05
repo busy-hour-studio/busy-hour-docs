@@ -1,0 +1,42 @@
+---
+sidebar_position: 1
+sidebar_label: Getting Started
+---
+
+import GettingStartedPrerequisites from '@site/src/components/docs/shared/prerequisites/react-react-native/GettingStarted';
+import { FirebaseSdk, FirebaseFcm } from "@site/src/components/docs/react/messaging/getting-started"
+
+# Getting Started
+
+In this section, we will show you how to start using Busy Hour Messaging features.
+
+## Prerequisites
+
+<GettingStartedPrerequisites />
+
+## Enabling Push Notifications
+
+To enable Push Notifications in your app, you need to do the following:
+
+1. Create a Firebase Project through [Firebase Console](https://firebase.google.com/)
+2. Enable Firebase Cloud Messaging through [Firebase Console](https://firebase.google.com/)
+3. Download Firebase Admin SDK Private Key from [Firebase Console](https://firebase.google.com/) by clicking "__Generate new private key__"
+
+<FirebaseSdk />
+
+4. Copy your Firebase Project Id, Client Email, and Private Key into your Busy Hour Project FCM Config.
+
+<FirebaseFcm />
+
+For more detail which field need to be filled with your Firebase Project Id, Client Email, and Private Key, please refer to the following table:
+
+| Property        | Type                        | Description                                                                         |
+| -------------   | --------------------------- | ----------------------------------------------------------------------------------- |
+| Project Id      | `string`                    | The ID of the Firebase Project                                                      |
+| Firebase Email  | `string`                    | The Client Email of the Firebase Project                                            |
+| Private Key     | `string`                    | The Private Key of the Firebase Project                                             |
+
+
+## What's Next?
+
+After you have completed the above steps, you are ready to start using Busy Hour Messaging features.

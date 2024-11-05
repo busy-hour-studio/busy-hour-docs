@@ -12,37 +12,42 @@ Busy Hour is a chat, voice & video call, and activity feeds solutions. Any messa
 
 ```tsx title="src/index.ts"
 import React, { useEffect } from 'react'
-import { useInitBusyApp } from '@busy-hour/react/hooks';
+import { useInitBusyApp } from '@busy-hour/react';
 // Config file from Busy Hour Dashboard
 import busyConfig from './busyConfig.json'
 
 export default function Index() {
   // highlight-start
-  const isAppInitialized = useInitBusyApp({
-    // initialize the app based on the config file
-    configFile: busyConfig,
-    projectAppId: 'your-project-app-id',
-    projectId: 'your-project-id',
+  const [isAppInitialized, isAppInitializedError] = useInitBusyApp({
     // determine if the app should be initialized or not
     isShouldInit: true,
-  });
-  // highlight-end
-
-  // highlight-start
-  const isServiceInitialized = useInitBusyService({
-    // get user auth data from busy hour through your BE
-    // read more at https://docs.busyhour.id/docs/category/nodejs
-    // or at https://docs.busyhour.id/docs/category/rest
+    clientId: 'your-client-id',
+    userId: 'your-user-id',
+    projectAppId: 'your-project-app-id',
+    projectId: 'your-project-id',
     accessToken: 'your-user-access-token',
     serviceToken: 'your-user-service-token',
-    // determine if the app should be initialized or not
-    isShouldInit: isAppInitialized,
+    // initialize the app based on the config file, downloaded from the dashboard
+    config: busyConfig,
+    onError(reinitialize) {
+      // Handle the initialization error
+      // For example, refetch the user access and service token
+      // ...
+      // Reinitialize the app
+      reinitialize();
+    }
   });
   // highlight-end
 
-  if (!isAppInitialized || !isServiceInitialized) {
+
+  if (!isAppInitialized) {
     return <div>Loading...</div>
   }
 
+  if (isAppInitializedError) {
+    return <div>Error: {isAppInitializedError}</div>
+  }
+
   return <App />
+}
 ```

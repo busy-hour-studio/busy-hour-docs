@@ -1,0 +1,46 @@
+---
+sidebar_position: 2
+sidebar_label: Listening to Last Message
+---
+
+import GettingStartedPrerequisites from '@site/src/components/docs/shared/prerequisites/react-react-native/GettingStarted';
+
+# Listening to Last Message
+
+# Getting Started
+
+In this section, we will show you how to listening to all last chat messages.
+
+## Prerequisites
+
+<GettingStartedPrerequisites />
+
+## Listen to Last Message
+
+To start listening to last chat messages, you can use the `useLastMessages` hooks from `@busy-hour/react` package. The hook itself take the following properties:
+
+| Property     | Type                            | Description                                     |
+| ------------ | ------------------------------- | ----------------------------------------------- |
+| isShouldInit | `boolean`                       | Determine if you want to start listening or not |
+| version      | `number`                        | The version of the last message to listen to    |
+| type         | `private` \| `group` (optional) | The type of the last message to listen to       |
+
+## Quick Example
+
+```tsx title="src/main.tsx"
+import React from 'react';
+import { useLastMessages } from '@busy-hour/react';
+
+export default function Main() {
+  // highlight-start
+  const chats = useLastMessages({
+    // Start the listening process
+    isShouldInit: true,
+    // Only listen to version 1 messages
+    version: 1,
+  });
+  // highlight-end
+
+  // ...rest of your code
+}
+```

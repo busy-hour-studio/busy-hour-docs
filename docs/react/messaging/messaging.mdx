@@ -1,0 +1,75 @@
+---
+sidebar_position: 4
+sidebar_label: Messaging
+---
+
+import GettingStartedPrerequisites from '@site/src/components/docs/shared/prerequisites/react-react-native/GettingStarted';
+
+# Messaging
+
+# Getting Started
+
+In this section, we will show you how to listening to all last chat messages.
+
+## Prerequisites
+
+<GettingStartedPrerequisites />
+
+## Messaging
+
+To start sending message, updating your message, and deleting your messaging, you can use the `useMessaging` hooks from `@busy-hour/react` package. The hook itself will return the following objects:
+
+| Property | Type       | Description                    |
+| -------- | ---------- | ------------------------------ |
+| send     | `Function` | The function to send message   |
+| update   | `Function` | The function to update message |
+| delete   | `Function` | The function to delete message |
+
+### Sending Message
+
+To send your message, you can use the `send` function. The function itself take the following properties:
+
+| Property    | Type                | Description                                                            |
+| ----------- | ------------------- | ---------------------------------------------------------------------- |
+| version     | `number`            | The version of the chat                                                |
+| chatId      | `string`            | The chat id where the message belongs to                               |
+| message     | `string` (optional) | The message to send                                                    |
+| metadata    | `object` (optional) | The metadata to send                                                   |
+| attachments | `array` (optional)  | The attachments to send                                                |
+| type        | `string`            | The type of the message, useful for sending different types of message |
+
+### Updating Message
+
+To update your message, you can use the `update` function. The function itself take the following properties:
+
+| Property    | Type                | Description                       |
+| ----------- | ------------------- | --------------------------------- |
+| version     | `number`            | The version of the chat           |
+| messageId   | `string`            | The message id you want to update |
+| message     | `string` (optional) | The message to send               |
+| metadata    | `object` (optional) | The metadata to send              |
+| attachments | `array` (optional)  | The attachments to send           |
+
+### Deleting Message
+
+To delete your message, you can use the `delete` function. The function itself take the following properties:
+
+| Property    | Type                | Description                       |
+| ----------- | ------------------- | --------------------------------- |
+| version     | `number`            | The version of the chat           |
+| messageId   | `string`            | The message id you want to delete |
+
+
+### Quick Example
+
+```tsx title="src/main.tsx"
+import React from 'react';
+import { useMessaging } from '@busy-hour/react';
+
+export default function Main() {
+  // highlight-next-line
+  const messaging = useMessaging();
+
+  // ...rest of your code
+}
+```
