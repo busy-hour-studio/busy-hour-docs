@@ -5,7 +5,11 @@ sidebar_label: Getting Started
 
 # Getting Started
 
-In this section, we will show you how to start using Busy Hour API through our Node Js SDK.
+In this section, we will show you how to start using Busy Hour API through our REST API.
+
+:::info
+Every API call requires the API Key to be included in the request header with the `x-busy-key` key and the value are prefixed with `Bearer `.
+:::
 
 ## Prerequisites
 

@@ -1,0 +1,33 @@
+---
+sidebar_position: 3
+sidebar_label: Deleting an App
+---
+
+import Prerequisites from '@site/src/components/docs/nodejs/Prerequisite';
+
+# Deleting an App
+
+:::danger
+Deleting any Busy Hour App will remove any access to the apps. Keep in mind that this action is irreversible and cannot be undone.
+:::
+
+In this section, we will show you how to delete a Busy Hour App.
+
+## Prerequisites
+
+<Prerequisites />
+
+## Deleting an App
+
+:::warning
+You can delete a Busy Hour App with any Master API Key or a Project API Key that only specificly for the project app you want to delete.
+:::
+
+To delete a Busy Hour App, you will need to use the `DELETE` method pointing to `/v1/apps/{projectAppId}` with the `projectAppId` is the ID of the user you want to delete.
+
+### Quick Example
+
+```curl
+curl -H "x-busy-key: Bearer {API_KEY}" \
+  -X DELETE https://api.busyhour.com/v1/apps/{projectAppId}
+```
