@@ -1,0 +1,44 @@
+---
+sidebar_position: 1
+sidebar_label: Listening to Last Comments
+---
+
+# Listening to Last Comments
+
+import GettingStartedPrerequisites from '@site/src/components/docs/shared/prerequisites/react-react-native/GettingStarted';
+
+# Getting Started
+
+In this section, we will show you how to listening to all last feeds.
+
+## Prerequisites
+
+<GettingStartedPrerequisites />
+
+## Listen to Last Comments
+
+To start listening to last feeds, you can use the `useFeedComments` hooks from `@busy-hour/react` package. The hook itself take the following properties:
+
+| Property     | Type                | Description                                        |
+| ------------ | ------------------- | -------------------------------------------------- |
+| isShouldInit | `boolean`           | Determine if you want to start listening or not    |
+| version      | `number`            | The version of the last message to listen to       |
+| userId       | `string` (optional) | The user id of the feed that you want to listen to |
+
+## Quick Example
+
+```tsx title="src/main.tsx"
+import React from 'react';
+import { useFeedComments } from '@busy-hour/react';
+
+export default function Main() {
+  // highlight-start
+  const comments = useFeedComments({
+    isShouldInit: true,
+    version: 1,
+  });
+  // highlight-end
+
+  // ...rest of your code
+}
+```

@@ -24,14 +24,14 @@ In this section, we will show you how to start using Busy Hour API through our N
 
 npm i @busy-hour/node
 
-```
+````
 </TabItem>
 <TabItem value="yarn" label="YARN">
 ```bash
 
 yarn add @busy-hour/node
 
-```
+````
 
 </TabItem>
 <TabItem value="pnpm" label="PNPM">
@@ -39,7 +39,7 @@ yarn add @busy-hour/node
 
 pnpm add @busy-hour/node
 
-```
+````
 </TabItem>
 </Tabs>
 
@@ -48,11 +48,13 @@ pnpm add @busy-hour/node
 To start using the Busy Hour API from NodeJs SDK, you need to import the `BusyHourNode` class from `@busy-hour/node` package. The class itself takes an object as an argument that contains the API key. For more information, you can refer to the code snippet below.
 
 ```ts title="src/index.ts"
-
-import BusyHourNode from '@busy-hour/node';
+import { BusyHourNode } from '@busy-hour/node';
 
 // Create an instance of BusyHourNode with your API key (Master/Project)
-// highlight-next-line
-const nodeSdk = new BusyHourNode({ apiKey: 'your-api-key' })
+// highlight-start
+const nodeSdk = new BusyHourNode({
+  apiToken: 'your-api-token',
+});
+// highlight-end
 
-```
+````

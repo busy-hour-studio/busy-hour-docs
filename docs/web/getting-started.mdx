@@ -1,0 +1,105 @@
+---
+sidebar_position: 1
+sidebar_label: Getting Started
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import GettingStartedPrerequisites from '@site/src/components/docs/shared/prerequisites/react-react-native/GettingStarted';
+
+# Getting Started
+
+In this section, we will show you how to initialize the Busy Hour App and Main Service.
+
+## Prerequisites
+
+<GettingStartedPrerequisites />
+
+## Installation
+
+<Tabs>
+<TabItem value="npm" label="NPM" default>
+
+```bash
+
+npm i @busy-hour/web
+
+```
+
+</TabItem>
+<TabItem value="yarn" label="YARN">
+
+```bash
+
+yarn add @busy-hour/web
+
+```
+
+</TabItem>
+<TabItem value="pnpm" label="PNPM">
+
+```bash
+
+pnpm add @busy-hour/web
+
+```
+
+</TabItem>
+</Tabs>
+
+## Initializing Busy Hour App
+
+:::danger
+To get the user access token and service token, you can use the `fetch/axios` to request user auth data from Busy Hour. Please keep in mind, that the process of requesting user auth data should be done only from your Backend and not from your Frontend.
+
+In this example, the idea is that you request the auth data to your Backend and then requesting it from Backend to our REST API or using the `@busy-hour/node` package, afterwards the response will be passed to the `initializeService` function.
+:::
+
+To initialize Busy Hour App, you can use the `initializeApp` function. The `initializeApp` function is exported from the `@busy-hour/web` package and take the following arguments:
+
+| Property       | Type     | Description                                                                         |
+| -------------- | -------- | ----------------------------------------------------------------------------------- |
+| `clientId`     | `string` | Your Busy Hour Client ID                                                            |
+| `projectId`    | `string` | Your Busy Hour Project ID                                                           |
+| `projectAppId` | `string` | Your Busy Hour Project App ID                                                       |
+| `userId`       | `string` | Your Busy Hour User ID                                                              |
+| `accessToken`  | `string` | Your User Access Token, read more at https://docs.busyhour.id/docs/category/nodejs  |
+| `serviceToken` | `string` | Your User Service Token, read more at https://docs.busyhour.id/docs/category/nodejs |
+| `config`       | `JSON`   | Your Busy Hour Project App Config file, get it from Busy Hour Dashboard/Apps        |
+
+### Quick Example
+
+```tsx title="src/main.tsx"
+import { initializeApp, useServiceStore } from '@busy-hour/web';
+// Config file from Busy Hour Dashboard
+import busyConfig from './busyConfig.json';
+
+// highlight-start
+// Subscribe to state changes
+const initializationState = [
+  useServiceStore.getState().isInitialized,
+  useServiceStore.getState().isInitializedError,
+];
+
+const unsubscribe = useServiceStore.subscribe((state) => {
+  // Do something with state
+  initializationState[0] = state.isInitialized;
+  initializationState[1] = state.isInitializedError;
+});
+// highlight-end
+
+// highlight-start
+// Initialize the app
+await initializeApp({
+  userId: 'your-user-id',
+  clientId: 'your-client-id',
+  projectId: 'your-project-id',
+  projectAppId: 'your-project-app-id',
+
+  config: busyConfig,
+
+  accessToken: 'your-user-access-token',
+  serviceToken: 'your-user-service-token',
+});
+// highlight-end
+```

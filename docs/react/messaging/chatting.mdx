@@ -1,0 +1,131 @@
+---
+sidebar_position: 4
+sidebar_label: Chat Management
+---
+
+import GettingStartedPrerequisites from '@site/src/components/docs/shared/prerequisites/react-react-native/GettingStarted';
+
+# Chatting
+
+# Getting Started
+
+In this section, we will show you how to manage your chats.
+
+## Prerequisites
+
+<GettingStartedPrerequisites />
+
+## Chatting
+
+To start creating your chat, updating your chat, and deleting your chat, you can use the `useChat` hooks from `@busy-hour/react` package. The hook itself will return the following objects:
+
+| Property     | Type       | Description                   |
+| ------------ | ---------- | ----------------------------- |
+| create       | `Function` | The function to create chat   |
+| update       | `Function` | The function to update chat   |
+| list         | `Function` | The function to list chat     |
+| find         | `Function` | The function to find chat     |
+| delete       | `Function` | The function to delete chat   |
+| addMember    | `Function` | The function to add member    |
+| removeMember | `Function` | The function to remove member |
+| leave        | `Function` | The function to leave chat    |
+
+### Creating Chat
+
+To create your chat, you can use the `create` function. The function itself take the following properties:
+
+| Property    | Type                 | Description                 |
+| ----------- | -------------------- | --------------------------- |
+| version     | `number`             | The version of the chat     |
+| name        | `string`             | The name of the chat        |
+| avatar      | `string` (optional)  | The avatar of the chat      |
+| description | `string` (optional)  | The description of the chat |
+| metadata    | `object` (optional)  | The metadata of the chat    |
+| type        | `private` \| `group` | The type of the chat        |
+| members     | `array`              | The members of the chat     |
+
+### Updating Chat
+
+To update your chat, you can use the `update` function. The function itself take the following properties:
+
+| Property    | Type                | Description                    |
+| ----------- | ------------------- | ------------------------------ |
+| version     | `number`            | The version of the chat        |
+| chatId      | `string`            | The chat id you want to update |
+| name        | `string`            | The name of the chat           |
+| avatar      | `string` (optional) | The avatar of the chat         |
+| description | `string` (optional) | The description of the chat    |
+| metadata    | `object` (optional) | The metadata of the chat       |
+
+### Listing Chats
+
+To list your chat, you can use the `list` function. The function itself take the following properties:
+
+| Property | Type                 | Description                                        |
+| -------- | -------------------- | -------------------------------------------------- |
+| version  | `number`             | The version of the chat to retrieve                |
+| name     | `string` (optional)  | The name of the chat to retrieve                   |
+| type     | `private` \| `group` | The type of the chat to retrieve                   |
+| limit    | `number` (optional)  | Total number of chats to retrieve, (default: 10)   |
+| page     | `number` (optional)  | The page number of chats to retrieve, (default: 1) |
+
+### Finding Chat
+
+To find your chat, you can use the `find` function. The function itself take the following properties:
+
+| Property | Type     | Description                  |
+| -------- | -------- | ---------------------------- |
+| version  | `number` | The version of the chat      |
+| chatId   | `string` | The chat id you want to find |
+
+### Deleting Chat
+
+To delete your chat, you can use the `delete` function. The function itself take the following properties:
+
+| Property | Type     | Description                    |
+| -------- | -------- | ------------------------------ |
+| version  | `number` | The version of the chat        |
+| chatId   | `string` | The chat id you want to delete |
+
+### Adding Member
+
+To add member to your chat, you can use the `addMember` function. The function itself take the following properties:
+
+| Property | Type     | Description                        |
+| -------- | -------- | ---------------------------------- |
+| version  | `number` | The version of the chat            |
+| chatId   | `string` | The chat id you want to add member |
+| members  | `array`  | The members you want to add        |
+
+### Removing Member
+
+To remove member from your chat, you can use the `removeMember` function. The function itself take the following properties:
+
+| Property | Type     | Description                           |
+| -------- | -------- | ------------------------------------- |
+| version  | `number` | The version of the chat               |
+| chatId   | `string` | The chat id you want to remove member |
+| userIds  | `array`  | The members you want to remove        |
+
+### Leaving Chat
+
+To leave your chat, you can use the `leave` function. The function itself take the following properties:
+
+| Property | Type     | Description                   |
+| -------- | -------- | ----------------------------- |
+| version  | `number` | The version of the chat       |
+| chatId   | `string` | The chat id you want to leave |
+
+### Quick Example
+
+```tsx title="src/main.tsx"
+import React from 'react';
+import { useChat } from '@busy-hour/react';
+
+export default function Main() {
+  // highlight-next-line
+  const manager = useChat();
+
+  // ...rest of your code
+}
+```

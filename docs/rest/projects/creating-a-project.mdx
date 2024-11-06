@@ -1,0 +1,39 @@
+---
+sidebar_position: 1
+sidebar_label: Creating a Project
+---
+
+import Prerequisites from '@site/src/components/docs/nodejs/Prerequisite';
+
+# Creating a Project
+
+:::danger
+Project creation is only available with a Master API Key or through the [Dashboard/Projects](https://busyhour.id/dashboard/projects).
+Since a Master API Key is the API Key with the highest permission level, please hide it securely so no one can access it directly.
+:::
+
+In this section, we will show you how to create a Busy Hour Project.
+
+## Prerequisites
+
+<Prerequisites />
+
+## Creating a Project
+
+To create a Busy Hour Project, you will need to use the `POST` method pointing to `/v1/projects`. The request itself accepts the following properties:
+
+| Property      | Type                | Description                    |
+| ------------- | ------------------- | ------------------------------ |
+| `name`        | `string`            | The name of the project        |
+| `description` | `string` (optional) | The description of the project |
+
+### Quick Example
+
+```curl
+curl -H "x-busy-key: Bearer {API_KEY}" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "My Project"
+  }' \
+  -X POST https://api.busyhour.id/v1/projects
+```

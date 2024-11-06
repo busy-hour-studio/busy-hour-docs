@@ -1,0 +1,50 @@
+---
+sidebar_position: 3
+sidebar_label: Retrieving Projects
+---
+
+import Prerequisites from '@site/src/components/docs/nodejs/Prerequisite';
+
+# Retrieving Projects
+
+In this section, we will show you how to get a list or one of Busy Hour Project.
+
+## Prerequisites
+
+<Prerequisites />
+
+## Retrieving Multiple Projects
+
+:::warning
+You only can retrieve a list of Busy Hour Project only with a Master API Key and not with a Project API Key.
+:::
+
+To retrieve a list of Busy Hour Project, you will need to use the `GET` method pointing to `/v1/projects`. The request itself accepts a query string with the following properties:
+
+| Property      | Type                | Description                                       |
+| ------------- | ------------------- | ------------------------------------------------- |
+| `projectName` | `string` (optional) | The name of the project                           |
+| limit         | `number` (optional) | Total number of apps to retrieve, (default: 10)   |
+| page          | `number` (optional) | The page number of apps to retrieve, (default: 1) |
+
+### Quick Example
+
+```curl
+curl -H "x-busy-key: Bearer {API_KEY}" \
+  https://api.busyhour.com/v1/projects?projectName={PROJECT_NAME}&limit={LIMIT}&page={PAGE}
+```
+
+## Retrieving a Project
+
+:::warning
+You only can retrieve a Busy Hour Project with any Master API Key or a Project API Key that only specificly for the project you want to retrieve.
+:::
+
+To retrieve a Busy Hour Project, you will need to use the `GET` method pointing to `/v1/projects/{projectId}` with the `projectId` is the ID of the project you want to retrieve.
+
+### Quick Example
+
+```curl
+curl -H "x-busy-key: Bearer {API_KEY}" \
+  https://api.busyhour.com/v1/projects/{projectId}
+```

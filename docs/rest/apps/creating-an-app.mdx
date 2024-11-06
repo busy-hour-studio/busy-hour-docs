@@ -1,0 +1,43 @@
+---
+sidebar_position: 1
+sidebar_label: Creating an App
+---
+
+import Prerequisites from '@site/src/components/docs/nodejs/Prerequisite';
+
+# Creating an App
+
+In this section, we will show you how to create a Busy Hour App.
+
+## Prerequisites
+
+<Prerequisites />
+
+## Creating an App
+
+:::warning
+You can create a Busy Hour App with any Master API Key or a Project API Key that only specificly for the project app you want to create.
+:::
+
+To create a Busy Hour App, you will need to use the `POST` method pointing to `/v1/apps`. The request itself accepts the following properties:
+
+| Property      | Type                        | Description                                                                         |
+| ------------- | --------------------------- | ----------------------------------------------------------------------------------- |
+| `projectId`   | `string`                    | The ID of the project that the app will belong to                                   |
+| `displayName` | `string`                    | The name of the app                                                                 |
+| `platform`    | `web` \| `android` \| `ios` | The platform of the app will be deployed to                                         |
+| `bundleId`    | `string` (optional)         | The bundleId of the app will be deployed to, set to `null` if the platform is `web` |
+
+### Quick Example
+
+```curl
+curl -H "x-busy-key: Bearer {API_KEY}" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "projectId": "your-project-id",
+    "displayName": "My App",
+    "platform": "web",
+    "bundleId": null
+  }' \
+  -X POST https://api.busyhour.id/v1/apps
+```

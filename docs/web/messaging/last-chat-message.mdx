@@ -1,0 +1,46 @@
+---
+sidebar_position: 3
+sidebar_label: Listening to Chat Messages
+---
+
+# Listening to Chat Messages
+
+import GettingStartedPrerequisites from '@site/src/components/docs/shared/prerequisites/react-react-native/GettingStarted';
+
+# Getting Started
+
+In this section, we will show you how to listening to all last chat messages.
+
+## Prerequisites
+
+<GettingStartedPrerequisites />
+
+## Listen to Chat Messages
+
+To start listening to chat messages, you can use the `listenToMessages` functions from `@busy-hour/web` package. The function itself take the following properties:
+
+| Property | Type     | Description                                  |
+| -------- | -------- | -------------------------------------------- |
+| chatId   | `string` | The chat id that you want to listen to       |
+| version  | `number` | The version of the last message to listen to |
+
+## Quick Example
+
+```tsx title="src/main.tsx"
+import { listenToMessages } from '@busy-hour/web';
+
+let lastMessages = [];
+
+// highlight-start
+// Listen to last messages
+const unsubscribe = listenToMessages({
+  version: 1,
+  onMessages(messages) {
+    lastMessages = messages;
+  },
+});
+// highlight-end
+
+// Remove the subscription
+unsubscribe();
+```

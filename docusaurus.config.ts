@@ -104,12 +104,12 @@ const config = {
                 to: 'docs/react',
               },
               {
-                label: 'React Native',
-                to: 'docs/react-native',
-              },
-              {
                 label: 'Node.js',
                 to: '/docs/nodejs',
+              },
+              {
+                label: 'Rest',
+                to: 'docs/rest',
               },
               {
                 label: 'More',

@@ -1,0 +1,93 @@
+---
+sidebar_position: 2
+sidebar_label: Activity Feed Management
+---
+
+import GettingStartedPrerequisites from '@site/src/components/docs/shared/prerequisites/react-react-native/GettingStarted';
+
+# Activity Feed Management
+
+# Getting Started
+
+In this section, we will show you how to manage your activity feeds.
+
+## Prerequisites
+
+<GettingStartedPrerequisites />
+
+## Activity Feed Management
+
+To start creating your activity feed, updating your activity feed, and deleting your activity feed, you can use the `core.feed` instance instance from `useServiceStore`. The instance itself will return the following objects:
+
+| Property | Type       | Description                          |
+| -------- | ---------- | ------------------------------------ |
+| create   | `Function` | The function to create activity feed |
+| update   | `Function` | The function to update activity feed |
+| list     | `Function` | The function to list activity feed   |
+| find     | `Function` | The function to find activity feed   |
+| delete   | `Function` | The function to delete activity feed |
+
+### Creating Feed
+
+To create your activity feed, you can use the `create` function. The function itself take the following properties:
+
+| Property    | Type                | Description                                                                         |
+| ----------- | ------------------- | ----------------------------------------------------------------------------------- |
+| version     | `number`            | The The version of your activity feed                                               |
+| title       | `string` (optional) | The title of your activity feed                                                     |
+| description | `string` (optional) | The description of your activity feed                                               |
+| attachments | `array` (optional)  | The attachments of your activity feed                                               |
+| custom      | `object`            | The custom data for your activity feed                                              |
+| type        | `string`            | The type of your activity feed, useful for sending different types of activity feed |
+
+### Updating Feed
+
+To update your activity feed, you can use the `update` function. The function itself take the following properties:
+
+| Property    | Type                | Description                                                                         |
+| ----------- | ------------------- | ----------------------------------------------------------------------------------- |
+| version     | `number`            | The The version of your activity feed                                               |
+| feedId      | `string`            | The id of your activity feed you want to update                                     |
+| title       | `string` (optional) | The title of your activity feed                                                     |
+| description | `string` (optional) | The description of your activity feed                                               |
+| attachments | `array` (optional)  | The attachments of your activity feed                                               |
+| custom      | `object`            | The custom data for your activity feed                                              |
+| type        | `string`            | The type of your activity feed, useful for sending different types of activity feed |
+
+### Listing Feeds
+
+To list your activity feeds, you can use the `list` function. The function itself take the following properties:
+
+| Property | Type                | Description                                                |
+| -------- | ------------------- | ---------------------------------------------------------- |
+| version  | `number`            | The The version of your activity feed                      |
+| limit    | `number` (optional) | Total number of activity feed to retrieve, (default: 10)   |
+| page     | `number` (optional) | The page number of activity feed to retrieve, (default: 1) |
+| userId   | `string` (optional) | The user id of your activity feed you want to list         |
+
+### Finding Feed
+
+To find your activity feed, you can use the `find` function. The function itself take the following properties:
+
+| Property | Type     | Description                                   |
+| -------- | -------- | --------------------------------------------- |
+| version  | `number` | The The version of your activity feed         |
+| feedId   | `string` | The id of your activity feed you want to find |
+
+### Deleting Feed
+
+To delete your activity feed, you can use the `delete` function. The function itself take the following properties:
+
+| Property | Type     | Description                                     |
+| -------- | -------- | ----------------------------------------------- |
+| version  | `number` | The The version of your activity feed           |
+| feedId   | `string` | The id of your activity feed you want to delete |
+
+#### Quick Example
+
+```tsx title="src/main.tsx"
+import { useServiceStore } from '@busy-hour/web';
+
+// highlight-next-line
+const manager = useServiceStore.getState().core.feed;
+```

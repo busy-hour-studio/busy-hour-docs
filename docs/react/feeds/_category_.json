@@ -1,0 +1,9 @@
+{
+  "label": "Activity Feed",
+  "position": 3,
+  "link": {
+    "slug": "react/feed",
+    "type": "generated-index",
+    "description": "Learn more about Busy Hour Activity Feed implementation in React."
+  }
+}

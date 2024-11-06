@@ -21,25 +21,29 @@ You only can update a Busy Hour Project with any Master API Key or a Project API
 
 To update a Busy Hour Project, you can use the `project.update` function from the `@busy-hour/node` package. The function take an object with the following properties:
 
-| Property      | Type     | Description                    |
-| ------------- | -------- | ------------------------------ |
-| `projectId`   | `string` | The ID of the project          |
-| `name`        | `string` | The name of the project        |
-| `description` | `string` | The description of the project |
+| Property      | Type                | Description                    |
+| ------------- | ------------------- | ------------------------------ |
+| `projectId`   | `string`            | The ID of the project          |
+| `name`        | `string`            | The name of the project        |
+| `description` | `string` (optional) | The description of the project |
 
 ### Quick Example
 
 ```ts title="src/main.ts"
-import BusyHourNode from '@busy-hour/node';
+import { BusyHourNode } from '@busy-hour/node';
 
 // Create an instance of BusyHourNode with your API key (Master/Project)
-// highlight-next-line
-const nodeSdk = new BusyHourNode({ apiKey: 'your-api-key' });
+const nodeSdk = new BusyHourNode({
+  apiToken: 'your-api-token',
+});
 
 // highlight-start
-nodeSdk.project.update('your-project-id', {
-  name: 'My Project',
-  description: 'This is my project',
+nodeSdk.project.update({
+  projectId: 'your-project-id',
+  payload: {
+    name: 'My Project',
+    description: 'This is my project',
+  },
 });
 // highlight-end
 ```

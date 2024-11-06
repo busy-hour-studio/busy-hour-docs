@@ -1,0 +1,9 @@
+{
+  "label": "User Management",
+  "position": 3,
+  "link": {
+    "slug": "rest/users",
+    "type": "generated-index",
+    "description": "Learn more about Busy Hour User Management in Node Js."
+  }
+}

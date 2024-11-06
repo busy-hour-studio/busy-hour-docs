@@ -1,9 +1,0 @@
-{
-  "label": "v2 React Native Activity Feed",
-  "position": 2,
-  "link": {
-    "slug": "react-native/v2/feed",
-    "type": "generated-index",
-    "description": "Learn more about Busy Hour Activity Feed implementation in React Native."
-  }
-}

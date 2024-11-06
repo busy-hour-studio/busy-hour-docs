@@ -28,13 +28,16 @@ To delete a Busy Hour Project, you can use the `project.delete` function from th
 ### Quick Example
 
 ```ts title="src/main.ts"
-import BusyHourNode from '@busy-hour/node';
+import { BusyHourNode } from '@busy-hour/node';
 
 // Create an instance of BusyHourNode with your API key (Master/Project)
-// highlight-next-line
-const nodeSdk = new BusyHourNode({ apiKey: 'your-api-key' });
+const nodeSdk = new BusyHourNode({
+  apiToken: 'your-api-token',
+});
 
 // highlight-start
-nodeSdk.project.delete('your-project-id');
+nodeSdk.project.delete({
+  projectId: 'your-project-id',
+});
 // highlight-end
 ```

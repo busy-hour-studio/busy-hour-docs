@@ -22,24 +22,27 @@ In this section, we will show you how to create a Busy Hour Project.
 
 To create a Busy Hour Project, you can use the `project.create` function from the `@busy-hour/node` package. The function take an object with the following properties:
 
-| Property      | Type     | Description                    |
-| ------------- | -------- | ------------------------------ |
-| `name`        | `string` | The name of the project        |
-| `description` | `string` | The description of the project |
+| Property      | Type                | Description                    |
+| ------------- | ------------------- | ------------------------------ |
+| `name`        | `string`            | The name of the project        |
+| `description` | `string` (optional) | The description of the project |
 
 ### Quick Example
 
 ```ts title="src/main.ts"
-import BusyHourNode from '@busy-hour/node';
+import { BusyHourNode } from '@busy-hour/node';
 
 // Create an instance of BusyHourNode with your API key (Master/Project)
-// highlight-next-line
-const nodeSdk = new BusyHourNode({ apiKey: 'your-api-key' });
+const nodeSdk = new BusyHourNode({
+  apiToken: 'your-api-token',
+});
 
 // highlight-start
 nodeSdk.project.create({
-  name: 'My Project',
-  description: 'This is my project',
+  payload: {
+    name: 'your-new-project-name',
+    description: null,
+  },
 });
 // highlight-end
 ```

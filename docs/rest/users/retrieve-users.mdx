@@ -1,0 +1,51 @@
+---
+sidebar_position: 4
+sidebar_label: Retrieving Users
+---
+
+import Prerequisites from '@site/src/components/docs/nodejs/Prerequisite';
+
+# Retrieving Users
+
+In this section, we will show you how to get a list or one of Busy Hour User.
+
+## Prerequisites
+
+<Prerequisites />
+
+## Retrieving Multiple Users
+
+:::warning
+You can retrieve a list of Busy Hour User with any Master API Key or a Project API Key that only specificly for the project user you want to retrieve.
+:::
+
+To retrieve a list of Busy Hour User, you will need to use the `GET` method pointing to `/v1/users`. The request itself accepts a query string with the following properties:
+
+| Property    | Type                | Description                                        |
+| ----------- | ------------------- | -------------------------------------------------- |
+| `projectId` | `string` (optional) | The ID of the project that the user belong to      |
+| `nickname`  | `string` (optional) | The nickname of the user                           |
+| limit       | `number` (optional) | Total number of users to retrieve, (default: 10)   |
+| page        | `number` (optional) | The page number of users to retrieve, (default: 1) |
+
+### Quick Example
+
+```curl
+curl -H "x-busy-key: Bearer {API_KEY}" \
+  https://api.busyhour.com/v1/users?projectId={PROJECT_ID}&limit={LIMIT}&page={PAGE}
+```
+
+## Retrieving a User
+
+:::warning
+You can retrieve a Busy Hour User with any Master API Key or a Project API Key that only specificly for the project user you want to retrieve.
+:::
+
+To retrieve a Busy Hour Project, you will need to use the `GET` method pointing to `/v1/users/{userId}` with the `userId` is the ID of the user you want to retrieve.
+
+### Quick Example
+
+```curl
+curl -H "x-busy-key: Bearer {API_KEY}" \
+  https://api.busyhour.com/v1/users/{userId}
+```

@@ -1,9 +1,0 @@
-{
-  "label": "v2 React",
-  "position": 5,
-  "link": {
-    "slug": "react/v2",
-    "type": "generated-index",
-    "description": "Learn more about Busy Hour v2 services implementation in React."
-  }
-}

@@ -1,0 +1,9 @@
+{
+  "label": "Comments",
+  "position": 3,
+  "link": {
+    "slug": "web/feed/comments",
+    "type": "generated-index",
+    "description": "Learn more about Busy Hour Activity Feed Comments implementation in Web."
+  }
+}

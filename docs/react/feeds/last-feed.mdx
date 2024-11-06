@@ -1,0 +1,44 @@
+---
+sidebar_position: 1
+sidebar_label: Listening to Last Activity Feed
+---
+
+# Listening to Last Activity Feed
+
+import GettingStartedPrerequisites from '@site/src/components/docs/shared/prerequisites/react-react-native/GettingStarted';
+
+# Getting Started
+
+In this section, we will show you how to listening to all last feeds.
+
+## Prerequisites
+
+<GettingStartedPrerequisites />
+
+## Listen to Last Activity Feed
+
+To start listening to last feeds, you can use the `useLastFeed` hooks from `@busy-hour/react` package. The hook itself take the following properties:
+
+| Property     | Type                | Description                                        |
+| ------------ | ------------------- | -------------------------------------------------- |
+| isShouldInit | `boolean`           | Determine if you want to start listening or not    |
+| version      | `number`            | The version of the last message to listen to       |
+| userId       | `string` (optional) | The user id of the feed that you want to listen to |
+
+## Quick Example
+
+```tsx title="src/main.tsx"
+import React from 'react';
+import { useLastFeed } from '@busy-hour/react';
+
+export default function Main() {
+  // highlight-start
+  const feeds = useLastFeed({
+    isShouldInit: true,
+    version: 1,
+  });
+  // highlight-end
+
+  // ...rest of your code
+}
+```

@@ -13,7 +13,6 @@ In this section, we will show you how to authenticate a Busy Hour User.
 
 <Prerequisites />
 
-
 ## Authenticate Users
 
 :::warning
@@ -25,13 +24,16 @@ To authenticate a Busy Hour User, you can use the `user.signIn` function from th
 ### Quick Example
 
 ```ts title="src/main.ts"
-import BusyHourNode from '@busy-hour/node';
+import { BusyHourNode } from '@busy-hour/node';
 
 // Create an instance of BusyHourNode with your API key (Master/Project)
-// highlight-next-line
-const nodeSdk = new BusyHourNode({ apiKey: 'your-api-key' });
+const nodeSdk = new BusyHourNode({
+  apiToken: 'your-api-token',
+});
 
 // highlight-start
-nodeSdk.user.signIn('your-user-id');
+nodeSdk.user.signIn({
+  userId: 'your-user-id',
+});
 // highlight-end
 ```

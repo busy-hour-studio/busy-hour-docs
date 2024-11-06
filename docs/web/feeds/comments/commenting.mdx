@@ -1,0 +1,88 @@
+---
+sidebar_position: 2
+sidebar_label: Comments Management
+---
+
+import GettingStartedPrerequisites from '@site/src/components/docs/shared/prerequisites/react-react-native/GettingStarted';
+
+# Comments Management
+
+# Getting Started
+
+In this section, we will show you how to manage your activity feeds comments.
+
+## Prerequisites
+
+<GettingStartedPrerequisites />
+
+## Comments Management
+
+To start commenting your activity feed, updating your comments, and deleting your comments, you can use the `core.comment` instance instance from `useServiceStore`. The instance itself will return the following objects:
+
+| Property | Type       | Description                    |
+| -------- | ---------- | ------------------------------ |
+| create   | `Function` | The function to create comment |
+| update   | `Function` | The function to update comment |
+| list     | `Function` | The function to list comment   |
+| find     | `Function` | The function to find comment   |
+| delete   | `Function` | The function to delete comment |
+
+### Creating Comment
+
+To create your comment, you can use the `create` function. The function itself take the following properties:
+
+| Property   | Type     | Description                                |
+| ---------- | -------- | ------------------------------------------ |
+| version    | `number` | The The version of your comment            |
+| feedId     | `string` | The id of your feed you want to comment on |
+| attributes | `object` | The attributes of your comment             |
+
+### Updating Comment
+
+To update your comment, you can use the `update` function. The function itself take the following properties:
+
+| Property   | Type     | Description                                |
+| ---------- | -------- | ------------------------------------------ |
+| version    | `number` | The The version of your comment            |
+| commentId  | `string` | The id of your comment you want to update  |
+| feedId     | `string` | The id of your feed you want to comment on |
+| attributes | `object` | The attributes of your comment             |
+
+### Listing Comments
+
+To list your comments, you can use the `list` function. The function itself take the following properties:
+
+| Property | Type                | Description                                           |
+| -------- | ------------------- | ----------------------------------------------------- |
+| version  | `number`            | The The version of your comments                      |
+| limit    | `number` (optional) | Total number of comments to retrieve, (default: 10)   |
+| page     | `number` (optional) | The page number of comments to retrieve, (default: 1) |
+| userId   | `string` (optional) | The user id of the comments you want to list          |
+| feedId   | `string` (optional) | The feed id comments you want to list                 |
+
+### Finding Comment
+
+To find your comment, you can use the `find` function. The function itself take the following properties:
+
+| Property  | Type     | Description                             |
+| --------- | -------- | --------------------------------------- |
+| version   | `number` | The The version of your comment         |
+| commentId | `string` | The id of your comment you want to find |
+
+### Deleting Comment
+
+To delete your comment, you can use the `delete` function. The function itself take the following properties:
+
+| Property  | Type     | Description                               |
+| --------- | -------- | ----------------------------------------- |
+| version   | `number` | The The version of your comment           |
+| commentId | `string` | The id of your comment you want to delete |
+
+#### Quick Example
+
+```tsx title="src/main.tsx"
+import { useServiceStore } from '@busy-hour/web';
+
+// highlight-next-line
+const manager = useServiceStore.getState().core.comment;
+```

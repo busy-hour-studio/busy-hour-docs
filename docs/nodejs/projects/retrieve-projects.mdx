@@ -13,7 +13,7 @@ In this section, we will show you how to get a list or one of Busy Hour Project.
 
 <Prerequisites />
 
-## Retrieving Projects
+## Retrieving Multiple Projects
 
 :::warning
 You only can retrieve a list of Busy Hour Project only with a Master API Key and not with a Project API Key.
@@ -24,17 +24,18 @@ To retrieve a list of Busy Hour Project, you can use the `project.list` function
 | Property      | Type                | Description                                       |
 | ------------- | ------------------- | ------------------------------------------------- |
 | `projectName` | `string` (optional) | The name of the project                           |
-| `limit`       | `number` (optional) | Total number of apps to retrieve, (default: 15)   |
-| `page`        | `number` (optional) | The page number of apps to retrieve, (default: 1) |
+| limit         | `number` (optional) | Total number of apps to retrieve, (default: 10)   |
+| page          | `number` (optional) | The page number of apps to retrieve, (default: 1) |
 
 ### Quick Example
 
 ```ts title="src/main.ts"
-import BusyHourNode from '@busy-hour/node';
+import { BusyHourNode } from '@busy-hour/node';
 
 // Create an instance of BusyHourNode with your API key (Master/Project)
-// highlight-next-line
-const nodeSdk = new BusyHourNode({ apiKey: 'your-api-key' });
+const nodeSdk = new BusyHourNode({
+  apiToken: 'your-api-token',
+});
 
 // highlight-start
 nodeSdk.project.list({
@@ -44,6 +45,7 @@ nodeSdk.project.list({
 });
 // highlight-end
 ```
+
 ## Retrieving a Project
 
 :::warning
@@ -55,13 +57,16 @@ To retrieve a Busy Hour Project, you can use the `project.find` function from th
 ### Quick Example
 
 ```ts title="src/main.ts"
-import BusyHourNode from '@busy-hour/node';
+import { BusyHourNode } from '@busy-hour/node';
 
 // Create an instance of BusyHourNode with your API key (Master/Project)
-// highlight-next-line
-const nodeSdk = new BusyHourNode({ apiKey: 'your-api-key' });
+const nodeSdk = new BusyHourNode({
+  apiToken: 'your-api-token',
+});
 
 // highlight-start
-nodeSdk.project.find('your-project-id');
+core.project.find({
+  projectId: 'your-project-id',
+});
 // highlight-end
 ```
