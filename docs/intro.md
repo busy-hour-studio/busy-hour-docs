@@ -11,10 +11,10 @@ Busy Hour is a chat, voice & video call, and activity feeds solutions. Any messa
 # Quick Example
 
 ```tsx title="src/index.ts"
-import React, { useEffect } from 'react'
+import React, { useEffect } from 'react';
 import { useInitBusyApp } from '@busy-hour/react';
 // Config file from Busy Hour Dashboard
-import busyConfig from './busyConfig.json'
+import busyConfig from './busyConfig.json';
 
 export default function Index() {
   // highlight-start
@@ -35,19 +35,18 @@ export default function Index() {
       // ...
       // Reinitialize the app
       reinitialize();
-    }
+    },
   });
   // highlight-end
 
-
   if (!isAppInitialized) {
-    return <div>Loading...</div>
+    return <div>Loading...</div>;
   }
 
   if (isAppInitializedError) {
-    return <div>Error: {isAppInitializedError}</div>
+    return <div>Error: {isAppInitializedError}</div>;
   }
 
-  return <App />
+  return <App />;
 }
 ```

@@ -19,13 +19,16 @@ In this section, we will show you how to initialize the Busy Hour App and Main S
 
 <Tabs>
 <TabItem value="npm" label="NPM" default>
+
 ```bash
 
 npm i @busy-hour/react
 
 ```
+
 </TabItem>
 <TabItem value="yarn" label="YARN">
+
 ```bash
 
 yarn add @busy-hour/react
@@ -34,11 +37,13 @@ yarn add @busy-hour/react
 
 </TabItem>
 <TabItem value="pnpm" label="PNPM">
+
 ```bash
 
 pnpm add @busy-hour/react
 
 ```
+
 </TabItem>
 </Tabs>
 
@@ -58,7 +63,7 @@ To initialize Busy Hour App, you can use the `useInitBusyHour` function. The `us
 | `clientId`     | `string`   | Your Busy Hour Client ID                                                                                                 |
 | `projectId`    | `string`   | Your Busy Hour Project ID                                                                                                |
 | `projectAppId` | `string`   | Your Busy Hour Project App ID                                                                                            |
-| `userId`       | `string`   | Your Busy Hour User ID                                                                                                 |
+| `userId`       | `string`   | Your Busy Hour User ID                                                                                                   |
 | `accessToken`  | `string`   | Your User Access Token, read more at https://docs.busyhour.id/docs/category/nodejs                                       |
 | `serviceToken` | `string`   | Your User Service Token, read more at https://docs.busyhour.id/docs/category/nodejs                                      |
 | `config`       | `JSON`     | Your Busy Hour Project App Config file, get it from Busy Hour Dashboard/Apps                                             |
@@ -70,11 +75,11 @@ To initialize Busy Hour App, you can use the `useInitBusyHour` function. The `us
 import React from 'react';
 import { useInitBusyHour } from '@busy-hour/react';
 // Config file from Busy Hour Dashboard
-import busyConfig from './busyConfig.json'
+import busyConfig from './busyConfig.json';
 
 export default function Main() {
   // highlight-start
-   const [isAppInitialized, isAppInitializedError] = useInitBusyApp({
+  const [isAppInitialized, isAppInitializedError] = useInitBusyApp({
     // determine if the app should be initialized or not
     isShouldInit: true,
     clientId: 'your-client-id',
@@ -94,19 +99,18 @@ export default function Main() {
       // ...
       // Reinitialize the app
       reinitialize();
-    }
+    },
   });
   // highlight-end
 
   if (!isAppInitialized) {
-    return <div>Loading...</div>
+    return <div>Loading...</div>;
   }
 
   if (isAppInitializedError) {
-    return <div>Error: {isAppInitializedError}</div>
+    return <div>Error: {isAppInitializedError}</div>;
   }
 
   return <MainApp />;
 }
 ```
-

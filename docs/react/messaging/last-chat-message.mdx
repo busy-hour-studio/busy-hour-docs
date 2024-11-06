@@ -7,7 +7,6 @@ sidebar_label: Listening to Chat Messages
 
 import GettingStartedPrerequisites from '@site/src/components/docs/shared/prerequisites/react-react-native/GettingStarted';
 
-
 # Getting Started
 
 In this section, we will show you how to listening to all last chat messages.
@@ -20,11 +19,11 @@ In this section, we will show you how to listening to all last chat messages.
 
 To start listening to chat messages, you can use the `useMessages` hooks from `@busy-hour/react` package. The hook itself take the following properties:
 
-| Property     | Type                            | Description                                     |
-| ------------ | ------------------------------- | ----------------------------------------------- |
-| isShouldInit | `boolean`                       | Determine if you want to start listening or not |
-| chatId       | `string`                        | The chat id that you want to listen to          |
-| version      | `number`                        | The version of the last message to listen to    |
+| Property     | Type      | Description                                     |
+| ------------ | --------- | ----------------------------------------------- |
+| isShouldInit | `boolean` | Determine if you want to start listening or not |
+| chatId       | `string`  | The chat id that you want to listen to          |
+| version      | `number`  | The version of the last message to listen to    |
 
 ## Quick Example
 
@@ -45,5 +44,4 @@ export default function Main() {
 
   // ...rest of your code
 }
-
 ```

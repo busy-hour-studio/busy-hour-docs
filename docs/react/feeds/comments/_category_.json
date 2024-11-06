@@ -1,0 +1,9 @@
+{
+  "label": "Comments",
+  "position": 2,
+  "link": {
+    "slug": "react/feed/comments",
+    "type": "generated-index",
+    "description": "Learn more about Busy Hour Activity Feed Comments implementation in React."
+  }
+}

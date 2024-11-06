@@ -67,6 +67,9 @@
     "node": ">=18.0"
   },
   "lint-staged": {
+    "docs/**/*.{md,mdx}": [
+      "prettier --write"
+    ],
     "src/**/*.{ts,tsx}": [
       "eslint --fix",
       "prettier --write"
