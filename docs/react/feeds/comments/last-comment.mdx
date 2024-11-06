@@ -1,9 +1,9 @@
 ---
 sidebar_position: 1
-sidebar_label: Listening to Last Activity Feed
+sidebar_label: Listening to Last Comments
 ---
 
-# Listening to Last Activity Feed
+# Listening to Last Comments
 
 import GettingStartedPrerequisites from '@site/src/components/docs/shared/prerequisites/react-react-native/GettingStarted';
 
@@ -15,9 +15,9 @@ In this section, we will show you how to listening to all last feeds.
 
 <GettingStartedPrerequisites />
 
-## Listen to Last Activity Feed
+## Listen to Last Comments
 
-To start listening to last feeds, you can use the `useLastFeed` hooks from `@busy-hour/react` package. The hook itself take the following properties:
+To start listening to last feeds, you can use the `useFeedComments` hooks from `@busy-hour/react` package. The hook itself take the following properties:
 
 | Property     | Type                | Description                                        |
 | ------------ | ------------------- | -------------------------------------------------- |
@@ -29,11 +29,11 @@ To start listening to last feeds, you can use the `useLastFeed` hooks from `@bus
 
 ```tsx title="src/main.tsx"
 import React from 'react';
-import { useLastFeed } from '@busy-hour/react';
+import { useFeedComments } from '@busy-hour/react';
 
 export default function Main() {
   // highlight-start
-  const feeds = useLastFeed({
+  const comments = useFeedComments({
     isShouldInit: true,
     version: 1,
   });

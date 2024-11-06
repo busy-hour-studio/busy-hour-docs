@@ -66,8 +66,8 @@ To list your chat, you can use the `list` function. The function itself take the
 | version  | `number`             | The version of the chat to retrieve                |
 | name     | `string` (optional)  | The name of the chat to retrieve                   |
 | type     | `private` \| `group` | The type of the chat to retrieve                   |
-| `limit`  | `number` (optional)  | Total number of chats to retrieve, (default: 10)   |
-| `page`   | `number` (optional)  | The page number of chats to retrieve, (default: 1) |
+| limit    | `number` (optional)  | Total number of chats to retrieve, (default: 10)   |
+| page     | `number` (optional)  | The page number of chats to retrieve, (default: 1) |
 
 ### Finding Chat
 
@@ -124,7 +124,7 @@ import { useChat } from '@busy-hour/react';
 
 export default function Main() {
   // highlight-next-line
-  const chat = useChat();
+  const manager = useChat();
 
   // ...rest of your code
 }
