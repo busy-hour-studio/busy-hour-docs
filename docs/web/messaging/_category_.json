@@ -1,0 +1,9 @@
+{
+  "label": "Messaging",
+  "position": 2,
+  "link": {
+    "slug": "web/messaging",
+    "type": "generated-index",
+    "description": "Learn more about Busy Hour Messaging implementation in Web."
+  }
+}

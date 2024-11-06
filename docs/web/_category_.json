@@ -1,0 +1,9 @@
+{
+  "label": "@busy-hour/web",
+  "position": 3,
+  "link": {
+    "slug": "web",
+    "type": "generated-index",
+    "description": "Learn more about Busy Hour implementation in Web."
+  }
+}

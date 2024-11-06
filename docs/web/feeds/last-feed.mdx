@@ -1,0 +1,46 @@
+---
+sidebar_position: 1
+sidebar_label: Listening to Last Activity Feed
+---
+
+# Listening to Last Activity Feed
+
+import GettingStartedPrerequisites from '@site/src/components/docs/shared/prerequisites/react-react-native/GettingStarted';
+
+# Getting Started
+
+In this section, we will show you how to listening to all last feeds.
+
+## Prerequisites
+
+<GettingStartedPrerequisites />
+
+## Listen to Last Activity Feed
+
+To start listening to last feeds, you can use the `listenToLastFeeds` functions from `@busy-hour/web` package. The function itself take the following properties:
+
+| Property | Type                | Description                                        |
+| -------- | ------------------- | -------------------------------------------------- |
+| version  | `number`            | The version of the last message to listen to       |
+| userId   | `string` (optional) | The user id of the feed that you want to listen to |
+
+## Quick Example
+
+```tsx title="src/main.tsx"
+import { listenToLastFeeds } from '@busy-hour/web';
+
+let lastFeeds = [];
+
+// highlight-start
+// Listen to last feeds
+const unsubscribe = listenToLastFeeds({
+  version: 1,
+  onLastFeeds(feeds) {
+    lastFeeds = feeds;
+  },
+});
+// highlight-end
+
+// Remove the subscription
+unsubscribe();
+```
